@@ -1,0 +1,152 @@
+{
+    "appTitle": "Singleton Boss",
+    "appDescription": "Esta es la descripción de la app",
+    "charts": [
+        {
+            "id": "",
+            "title": "",
+            "description": ""
+        },
+        {
+            "id": "",
+            "title": "",
+            "description": ""
+        },
+        {
+            "id": "",
+            "title": "",
+            "description": ""
+        }
+    ],
+    "pages": {
+        "tutorial": {
+            "title": "Tutorial",
+            "subTitle": "Infórmece con los principales Widgets",
+            "slides": [
+                {
+                    "id": "",
+                    "title": "Info 1",
+                    "subTitle": "Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500"
+                },
+                {
+                    "id": "",
+                    "title": "Info 2",
+                    "subTitle": "Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500"
+                }
+            ],
+            "button": {
+                "top": "Siguiente",
+                "bottom": "Saltar Tutorial"
+            }
+        },
+        "login": {
+            "title": "Login",
+            "subTitle": "Login description",
+            "userPlaceholder": "Usuario",
+            "passwordPlaceholder": "Contraseña",
+            "recoverPassword": "Recuperar Contraseña",
+            "button": "Iniciar Sesión"
+        },
+        "board": {
+            "title": "Inicio",
+            "subTitle": "Infórmece con los principales Widgets"
+        },
+        "stats": {
+            "title": "Estadísticas",
+            "subTitle": "Ve las estadistiacs de tu empresa por sectores",
+            "items": [
+                {
+                    "id": "",
+                    "title": "Finanzas",
+                    "subTitle": "Descipción General"
+                },
+                {
+                    "id": "",
+                    "title": "Ventas",
+                    "subTitle": "Descipción General"
+                },
+                {
+                    "id": "",
+                    "title": "Compras",
+                    "subTitle": "Descipción General"
+                },
+                {
+                    "id": "",
+                    "title": "Producción",
+                    "subTitle": "Descipción General"
+                },
+                {
+                    "id": "",
+                    "title": "Recursos Humanos",
+                    "subTitle": "Descipción General"
+                }
+            ]
+        },
+        "notifications": {
+            "title": "Notificaciones",
+            "subTitle": "Ve las notificaiones",
+            "items": [
+                {
+                    "id": "",
+                    "title": "",
+                    "subTitle": ""
+                },
+                {
+                    "id": "",
+                    "title": "",
+                    "subTitle": ""
+                },
+                {
+                    "id": "",
+                    "title": "",
+                    "subTitle": ""
+                }
+            ]
+        },
+        "settings": {
+            "title": "Configuraciones",
+            "subTitle": "Configura las distintas variables de Boss",
+            "items": [
+                {
+                    "title": "General",
+                    "subTitle": "Descipción General"
+                },
+                {
+                    "title": "Widgets",
+                    "subTitle": "Descripción Widgets"
+                },
+                {
+                    "title": "Notificaión",
+                    "subTitle": "Acerca de..."
+                },
+                {
+                    "title": "Perfil",
+                    "subTitle": "Acerca de..."
+                },
+                {
+                    "title": "Ayuda y soporte",
+                    "subTitle": "Acerca de..."
+                },
+                {
+                    "title": "Acerda de...",
+                    "subTitle": "Acerca de..."
+                }
+            ]
+        },
+        "filter": {
+            "title": "Filtro",
+            "subTitle": "Escoge el rango de tiempo de tus widgets",
+            "description": "Escoge el rango de tiempo en el que se mostraran tus widgets",
+            "dateTimeOpen": {
+                "date": "Fecha de inicio",
+                "time": "Hora de inicio"
+            },
+            "dateTimeEnd": {
+                "date": "Fecha de fin",
+                "time": "Hora de fin"
+            },
+            "buttonCancel": "Cancelar",
+            "buttonFilter": "Filtrar"
+        }
+    }
+}
