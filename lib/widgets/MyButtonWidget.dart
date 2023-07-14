@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:boss/resources/AppDimensions.dart';
 import 'package:flutter/material.dart';
 
@@ -26,10 +28,10 @@ class MyButtonWidget extends StatelessWidget {
         ),
         onPressed: onPressed,
         child: Padding(
-          padding: EdgeInsets.all(AppDimensions.spacingSmall),
+          padding: const EdgeInsets.all(AppDimensions.spacingSmall),
           child: Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: AppDimensions.fontSizeXSmall,
             ),
           ),

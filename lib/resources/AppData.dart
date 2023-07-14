@@ -1,31 +1,53 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 class AppData {
-  static const List<dynamic> myListMenuGeneral = [
+  static List<dynamic> myListMenuSetting = [
     {
       "leading": Icon(Icons.settings_applications_sharp),
-      "onPressed": '/config/general'
+      "onPressed": (context) {
+        Navigator.pushNamed(context, '/config/general');
+      }
     },
     {
       "leading": Icon(Icons.data_thresholding_rounded),
-      "onPressed": '/config/widgets'
+      "onPressed": (context) {
+        Navigator.pushNamed(context, '/config/widgets');
+      }
     },
     {
-      "leading": Icon(Icons.notifications_active_rounded),
-      "onPressed": '/config/notifications'
+      "leading": Icon(Icons.edit_notifications_rounded),
+      "onPressed": (context) {
+        Navigator.pushNamed(context, '/config/notifications');
+      }
     },
     {
       "leading": Icon(Icons.account_box_rounded),
-      "onPressed": '/config/profile'
+      "onPressed": (context) {
+        Navigator.pushNamed(context, '/config/profile');
+      }
     },
     {
       "leading": Icon(Icons.help_rounded),
-      "onPressed": '/config/help',
+      "onPressed": (context) {
+        Navigator.pushNamed(context, '/config/help');
+      },
     },
     {
       "leading": Icon(Icons.logo_dev_outlined),
-      "onPressed": '/config/about',
+      "onPressed": (context) {
+        Navigator.pushNamed(context, '/config/about');
+      },
+    },
+    {
+      "leading": Icon(Icons.login_rounded),
+      "onPressed": (context) async {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.remove('username');
+        Navigator.pushNamed(context, '/login');
+      },
     },
   ];
 
@@ -49,6 +71,35 @@ class AppData {
     {
       "leading": Icon(Icons.people),
       "onPressed": '/stat/humanResources',
+    },
+  ];
+
+  static const List<dynamic> myListMenuSettingGeneral = [
+    {
+      "leading": Icon(Icons.attach_money_rounded),
+      "onPressed": '/stat/finance',
+    },
+    {
+      "leading": Icon(Icons.point_of_sale_rounded),
+      "onPressed": '/stat/sales',
+    },
+    {
+      "leading": Icon(Icons.shopping_bag_rounded),
+      "onPressed": '/stat/shopping',
+    },
+    {
+      "leading": Icon(Icons.production_quantity_limits_rounded),
+      "onPressed": '/stat/production',
+    },
+    {
+      "leading": Icon(Icons.people),
+      "onPressed": '/stat/humanResources',
+    },
+  ];
+
+  static const List<dynamic> myListMenuSettingAbout = [
+    {
+      "trailing": Text("v1.5.0"),
     },
   ];
 }

@@ -1,9 +1,11 @@
 import 'package:boss/providers/LanguageProvider.dart';
 import 'package:boss/providers/ThemeProvider.dart';
+import 'package:boss/resources/AppData.dart';
 import 'package:boss/resources/AppDimensions.dart';
 import 'package:boss/widgets/components/MyListTileGeneralWidget.dart';
 import 'package:boss/widgets/components/MyLogoTextWidget.dart';
 import 'package:boss/widgets/components/MyLogoWidget.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,12 +22,14 @@ class AboutPage extends StatelessWidget {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("subTitle",
+            Text(
+                watchLanguage
+                    .languageTexts!.pages.settings.pages.about.subTitle,
                 style: TextStyle(
                   fontSize: AppDimensions.fontSizeXXSmall,
                   color: watchTheme.colors.lightPrimary,
                 )),
-            Text(watchLanguage.languageTexts!.appTitle,
+            Text(watchLanguage.languageTexts!.pages.settings.pages.about.title,
                 style: TextStyle(
                   fontSize: AppDimensions.fontSizeSmall,
                 )),
@@ -41,13 +45,15 @@ class AboutPage extends StatelessWidget {
             MyLogoTextWidget(size: 20),
             Container(
               child: Column(
-                children: [
-                  MyListTileGeneralWidget(
-                    title: "Singleton",
-                    subtitle: "descripcion",
-                    trailing: Text("v1.5.0"),
-                  ),
-                ],
+                children: watchLanguage
+                    .languageTexts!.pages.settings.pages.about.options
+                    .mapIndexed((i, item) => MyListTileGeneralWidget(
+                          title: item.title,
+                          subtitle: item.subTitle,
+                          trailing: AppData.myListMenuSettingAbout[i]
+                              ["trailing"],
+                        ))
+                    .toList(),
               ),
               decoration: BoxDecoration(
                   color: watchTheme.colors.primary,

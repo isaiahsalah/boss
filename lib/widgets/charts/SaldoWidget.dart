@@ -24,6 +24,7 @@ class MyBalanceWidget extends StatelessWidget {
     ThemeProvider watchTheme = context.watch<ThemeProvider>();
     ThemeProvider readTheme = context.read<ThemeProvider>();
     return MyCardWidget(
+      header: true,
       title: title,
       description: description,
       footer: false,

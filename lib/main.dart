@@ -1,10 +1,10 @@
 import 'package:boss/pages/FilterPage.dart';
 import 'package:boss/pages/HomePage.dart';
-import 'package:boss/pages/homePage/FlyPage.dart';
+import 'package:boss/pages/homePage/notificationPages/NotificationCashClosurePage.dart';
 import 'package:boss/pages/homePage/settingPages/SettingAboutPage.dart';
 import 'package:boss/pages/homePage/settingPages/SettingGeneralPage.dart';
 import 'package:boss/pages/homePage/settingPages/SettingHelpPage.dart';
-import 'package:boss/pages/homePage/settingPages/SettingNotificationSettingPage.dart';
+import 'package:boss/pages/homePage/settingPages/SettingNotificationPage.dart';
 import 'package:boss/pages/homePage/settingPages/SettingProfilePage.dart';
 import 'package:boss/pages/homePage/settingPages/SettingWidgetPage.dart';
 import 'package:boss/pages/LoginPage.dart';
@@ -13,12 +13,13 @@ import 'package:boss/pages/homePage/statPages/StatFinancePage.dart';
 import 'package:boss/pages/homePage/statPages/StatHumanResourcePage.dart';
 import 'package:boss/pages/homePage/statPages/StatProductionPage.dart';
 import 'package:boss/pages/homePage/statPages/StatSalesPage.dart';
-import 'package:boss/pages/homePage/statPages/StatShoppingPage.dart';
+import 'package:boss/pages/homePage/statPages/StatPurchasesPage.dart';
 import 'package:boss/providers/FilterDateProvider.dart';
 import 'package:boss/providers/LanguageProvider.dart';
+import 'package:boss/providers/NotificationItemProvider.dart';
 import 'package:boss/providers/NotificationProvider.dart';
-import 'package:boss/providers/NotificationSettingProvider.dart';
 import 'package:boss/providers/ThemeProvider.dart';
+import 'package:boss/providers/UserProvider.dart';
 import 'package:boss/providers/WidgetShowProvider.dart';
 import 'package:boss/resources/AppDimensions.dart';
 import 'package:flutter/material.dart';
@@ -45,11 +46,14 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider<WidgetShowProvider>(
             create: (_) => WidgetShowProvider(),
           ),
-          ChangeNotifierProvider<NotificationSettingProvider>(
-            create: (_) => NotificationSettingProvider(),
-          ),
           ChangeNotifierProvider<NotificationProvider>(
             create: (_) => NotificationProvider(),
+          ),
+          ChangeNotifierProvider<NotificationItemProvider>(
+            create: (_) => NotificationItemProvider(),
+          ),
+          ChangeNotifierProvider<UserProvider>(
+            create: (_) => UserProvider(),
           ),
         ],
         builder: (context, _) {
@@ -74,7 +78,7 @@ class MyApp extends StatelessWidget {
                     '/config/general': (context) => const GeneralPage(),
                     '/config/widgets': (context) => const WidgetPage(),
                     '/config/notifications': (context) =>
-                        const NotificationSettingPage(),
+                        const NotificationPage(),
                     '/config/profile': (context) => const ProfilePage(),
                     '/config/help': (context) => const HelpPage(),
                     '/config/about': (context) => const AboutPage(),
@@ -82,15 +86,14 @@ class MyApp extends StatelessWidget {
                     //Paginas de estadisticas generales
                     '/stat/finance': (context) => const StatFinancePage(),
                     '/stat/sales': (context) => const StatSalesPage(),
-                    '/stat/shopping': (context) => const StatShoppingPage(),
+                    '/stat/shopping': (context) => const StatPurchasesPage(),
                     '/stat/production': (context) => const StatProductionPage(),
                     '/stat/humanResources': (context) =>
                         const StatHumanResourcePage(),
-                    '/dud': (context) => const DudPage(),
-
-                    //
+                    '/not/cashClosure': (context) =>
+                        const NotificationCashClosurePage(),
                   },
-                  initialRoute: '/tutorial',
+                  initialRoute: '/login',
                 );
         });
   }
@@ -98,9 +101,14 @@ class MyApp extends StatelessWidget {
 
 ThemeData themeData(BuildContext context) {
   ThemeProvider watchTheme = context.watch<ThemeProvider>();
-  ThemeProvider readTheme = context.read<ThemeProvider>();
   return ThemeData(
-    switchTheme: SwitchThemeData(),
+    snackBarTheme: SnackBarThemeData(
+        backgroundColor: watchTheme.colors.lightBackground,
+        actionTextColor: watchTheme.colors.white,
+        contentTextStyle: TextStyle(
+          color: watchTheme.colors.white,
+        )),
+    switchTheme: const SwitchThemeData(),
     dataTableTheme: DataTableThemeData(
       dataRowColor: MaterialStateProperty.all<Color>(Colors.transparent),
       headingRowColor: MaterialStateProperty.all<Color>(Colors.transparent),
@@ -129,8 +137,9 @@ ThemeData themeData(BuildContext context) {
     ),
     textTheme: Theme.of(context).textTheme.apply(
         fontFamily: GoogleFonts.nunito().fontFamily,
+        decorationColor: watchTheme.colors.white,
         bodyColor: watchTheme.colors.white),
-    colorScheme: ColorScheme.dark().copyWith(
+    colorScheme: const ColorScheme.dark().copyWith(
       primary: watchTheme.colors.primary,
       background: watchTheme.colors.background,
       onPrimary: watchTheme.colors.white,

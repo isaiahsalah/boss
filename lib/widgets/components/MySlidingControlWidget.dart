@@ -6,12 +6,17 @@ import 'package:provider/provider.dart';
 
 class MySlidingControlWidget extends StatelessWidget {
   final int initialValue;
+  final Color backColor;
+  final Color color;
+
   final Map<int, Widget> itemsMenu;
   final Function(int i) onValueChanged;
   const MySlidingControlWidget({
     Key? key,
     required this.initialValue,
     required this.itemsMenu,
+    required this.backColor,
+    required this.color,
     required this.onValueChanged,
   }) : super(key: key);
 
@@ -26,7 +31,7 @@ class MySlidingControlWidget extends StatelessWidget {
       initialValue: initialValue,
       children: itemsMenu,
       decoration: BoxDecoration(
-        color: watchTheme.colors.lightBackground,
+        color: backColor,
         borderRadius: BorderRadius.circular(AppDimensions.radiusLong),
         boxShadow: [
           BoxShadow(
@@ -41,7 +46,7 @@ class MySlidingControlWidget extends StatelessWidget {
         ],
       ),
       thumbDecoration: BoxDecoration(
-        color: watchTheme.colors.primary,
+        color: color,
         borderRadius: BorderRadius.circular(AppDimensions.radiusMedium),
         boxShadow: [
           BoxShadow(

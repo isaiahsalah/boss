@@ -1,4 +1,5 @@
-import 'package:boss/providers/NotificationSettingProvider.dart';
+import 'package:boss/providers/LanguageProvider.dart';
+import 'package:boss/providers/NotificationProvider.dart';
 import 'package:boss/providers/ThemeProvider.dart';
 import 'package:boss/resources/AppDimensions.dart';
 import 'package:boss/widgets/components/MyListTileGeneralWidget.dart';
@@ -6,15 +7,14 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class NotificationSettingPage extends StatefulWidget {
-  const NotificationSettingPage({super.key});
+class NotificationPage extends StatefulWidget {
+  const NotificationPage({super.key});
 
   @override
-  State<NotificationSettingPage> createState() =>
-      _NotificationSettingPageState();
+  State<NotificationPage> createState() => _NotificationPageState();
 }
 
-class _NotificationSettingPageState extends State<NotificationSettingPage> {
+class _NotificationPageState extends State<NotificationPage> {
   List<dynamic> list = <dynamic>[
     {
       "name": "uno",
@@ -32,11 +32,32 @@ class _NotificationSettingPageState extends State<NotificationSettingPage> {
   @override
   Widget build(BuildContext context) {
     ThemeProvider watchTheme = context.watch<ThemeProvider>();
-    NotificationSettingProvider watchNotification =
-        context.watch<NotificationSettingProvider>();
+    LanguageProvider watchLanguage = context.watch<LanguageProvider>();
+
+    NotificationProvider watchNotification =
+        context.watch<NotificationProvider>();
 
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                  watchLanguage.languageTexts!.pages.settings.pages.notification
+                      .subTitle,
+                  style: TextStyle(
+                    fontSize: AppDimensions.fontSizeXXSmall,
+                    color: watchTheme.colors.lightPrimary,
+                  )),
+              Text(
+                  watchLanguage
+                      .languageTexts!.pages.settings.pages.notification.title,
+                  style: TextStyle(
+                    fontSize: AppDimensions.fontSizeSmall,
+                  )),
+            ],
+          ),
+        ),
         body: Padding(
           padding: const EdgeInsets.all(AppDimensions.spacingMedium),
           child: Container(

@@ -1,7 +1,8 @@
+// ignore_for_file: file_names
+
 import 'package:boss/providers/LanguageProvider.dart';
 import 'package:boss/providers/ThemeProvider.dart';
 import 'package:boss/resources/AppDimensions.dart';
-import 'package:boss/widgets/components/MyListTileGeneralWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,7 +17,7 @@ class Item {
   String headerValue;
   bool isExpanded;
 }
-
+/*
 List<Item> generateItems(int numberOfItems) {
   return List<Item>.generate(numberOfItems, (int index) {
     return Item(
@@ -24,7 +25,7 @@ List<Item> generateItems(int numberOfItems) {
       expandedValue: 'This is item number $index',
     );
   });
-}
+}*/
 
 class HelpPage extends StatefulWidget {
   const HelpPage({super.key});
@@ -34,26 +35,57 @@ class HelpPage extends StatefulWidget {
 }
 
 class _HelpPageState extends State<HelpPage> {
-  final List<Item> _data = generateItems(8);
+  late List<Item> _data;
+
+  @override
+  void initState() {
+    super.initState();
+    _data = Provider.of<LanguageProvider>(context, listen: false)
+        .languageTexts!
+        .pages
+        .settings
+        .pages
+        .help
+        .options
+        .map((item) => Item(
+              headerValue: item.title,
+              expandedValue: item.subTitle,
+            ))
+        .toList();
+  }
+  /*final List<Item> data = <Item>[
+    Item(
+      headerValue: "",
+      expandedValue: "",
+    )
+  ];*/
 
   @override
   Widget build(BuildContext context) {
     LanguageProvider watchLanguage = context.watch<LanguageProvider>();
-    LanguageProvider readLanguage = context.read<LanguageProvider>();
     ThemeProvider watchTheme = context.watch<ThemeProvider>();
-    ThemeProvider readTheme = context.read<ThemeProvider>();
+
+    /*final List<Item> data =
+        watchLanguage.languageTexts!.pages.settings.pages.help.options
+            .map((item) => Item(
+                  headerValue: item.title,
+                  expandedValue: item.subTitle,
+                ))
+            .toList();*/
+
     return Scaffold(
       appBar: AppBar(
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("subTitle",
+            Text(
+                watchLanguage.languageTexts!.pages.settings.pages.help.subTitle,
                 style: TextStyle(
                   fontSize: AppDimensions.fontSizeXXSmall,
                   color: watchTheme.colors.lightPrimary,
                 )),
-            Text(watchLanguage.languageTexts!.appTitle,
-                style: TextStyle(
+            Text(watchLanguage.languageTexts!.pages.settings.pages.help.title,
+                style: const TextStyle(
                   fontSize: AppDimensions.fontSizeSmall,
                 )),
           ],
@@ -63,6 +95,10 @@ class _HelpPageState extends State<HelpPage> {
         child: Padding(
           padding: const EdgeInsets.all(AppDimensions.spacingMedium),
           child: Container(
+            decoration: BoxDecoration(
+                color: watchTheme.colors.primary,
+                borderRadius:
+                    BorderRadius.circular(AppDimensions.spacingSmall)),
             child: Padding(
               padding: const EdgeInsets.all(AppDimensions.spacingMedium),
               child: Column(
@@ -70,10 +106,6 @@ class _HelpPageState extends State<HelpPage> {
                 children: [_buildPanel(watchTheme)],
               ),
             ),
-            decoration: BoxDecoration(
-                color: watchTheme.colors.primary,
-                borderRadius:
-                    BorderRadius.circular(AppDimensions.spacingSmall)),
           ),
         ),
       ),

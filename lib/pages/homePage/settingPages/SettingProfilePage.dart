@@ -1,9 +1,10 @@
+// ignore_for_file: file_names
+
 import 'package:boss/providers/LanguageProvider.dart';
 import 'package:boss/providers/ThemeProvider.dart';
 import 'package:boss/resources/AppDimensions.dart';
-import 'package:boss/widgets/components/MyComboBoxWidget.dart';
 import 'package:boss/widgets/components/MyListTileGeneralWidget.dart';
-import 'package:boss/widgets/components/MySwithWidget.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,26 +18,31 @@ class ProfilePage extends StatefulWidget {
 const List<String> list = <String>['Semana', 'Mes', 'Año'];
 
 class _ProfilePageState extends State<ProfilePage> {
-  bool _lights = false;
   String dropdownValue = list.first;
+
+  final List<dynamic> myListMenuSettingProfile = [
+    IconButton(
+        onPressed: () {}, icon: const Icon(Icons.arrow_forward_ios_rounded)),
+  ];
   @override
   Widget build(BuildContext context) {
     LanguageProvider watchLanguage = context.watch<LanguageProvider>();
-    LanguageProvider readLanguage = context.read<LanguageProvider>();
     ThemeProvider watchTheme = context.watch<ThemeProvider>();
-    ThemeProvider readTheme = context.read<ThemeProvider>();
     return Scaffold(
       appBar: AppBar(
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("subTitle",
+            Text(
+                watchLanguage
+                    .languageTexts!.pages.settings.pages.profile.subTitle,
                 style: TextStyle(
                   fontSize: AppDimensions.fontSizeXXSmall,
                   color: watchTheme.colors.lightPrimary,
                 )),
-            Text(watchLanguage.languageTexts!.appTitle,
-                style: TextStyle(
+            Text(
+                watchLanguage.languageTexts!.pages.settings.pages.profile.title,
+                style: const TextStyle(
                   fontSize: AppDimensions.fontSizeSmall,
                 )),
           ],
@@ -45,25 +51,25 @@ class _ProfilePageState extends State<ProfilePage> {
       body: Padding(
         padding: const EdgeInsets.all(AppDimensions.spacingMedium),
         child: Container(
+          decoration: BoxDecoration(
+              color: watchTheme.colors.primary,
+              borderRadius: BorderRadius.circular(AppDimensions.spacingSmall)),
           child: Padding(
             padding: const EdgeInsets.all(AppDimensions.spacingMedium),
             child: Column(
               mainAxisSize: MainAxisSize.min,
-              children: [
-                MyListTileGeneralWidget(
-                  title: "Cambiar contraseña",
-                  subtitle: "wdfsefes",
-                  trailing: IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.arrow_forward_ios_rounded)),
-                ),
-                Divider(height: 1),
-              ],
+              children: watchLanguage
+                  .languageTexts!.pages.settings.pages.profile.options
+                  .mapIndexed(
+                    (i, item) => MyListTileGeneralWidget(
+                      title: item.title,
+                      subtitle: item.subTitle,
+                      trailing: myListMenuSettingProfile[i],
+                    ),
+                  )
+                  .toList(),
             ),
           ),
-          decoration: BoxDecoration(
-              color: watchTheme.colors.primary,
-              borderRadius: BorderRadius.circular(AppDimensions.spacingSmall)),
         ),
       ),
     );

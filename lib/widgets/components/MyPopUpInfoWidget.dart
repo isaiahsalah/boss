@@ -18,12 +18,15 @@ class PopUpInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeProvider watchTheme = context.watch<ThemeProvider>();
-    ThemeProvider readTheme = context.read<ThemeProvider>();
     return IconButton(
-      icon: Icon(iconPopUp),
+      icon: Icon(
+        iconPopUp,
+      ),
       color: watchTheme.colors.lightPrimary,
       style: IconButton.styleFrom(
         iconSize: AppDimensions.fontSizeMedium,
+        padding: EdgeInsets.all(5),
+        minimumSize: Size(10, 10),
       ),
       onPressed: () => showDialog<String>(
         context: context,

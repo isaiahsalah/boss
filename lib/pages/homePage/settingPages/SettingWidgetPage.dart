@@ -1,3 +1,6 @@
+// ignore_for_file: file_names
+
+import 'package:boss/providers/LanguageProvider.dart';
 import 'package:boss/providers/ThemeProvider.dart';
 import 'package:boss/providers/WidgetShowProvider.dart';
 import 'package:boss/resources/AppDimensions.dart';
@@ -10,11 +13,29 @@ class WidgetPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    LanguageProvider watchLanguage = context.watch<LanguageProvider>();
+    ThemeProvider watchTheme = context.watch<ThemeProvider>();
+
     return Scaffold(
-      appBar: AppBar(),
-      body: Container(
-        child: ReorderableExample(),
+      appBar: AppBar(
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+                watchLanguage
+                    .languageTexts!.pages.settings.pages.widget.subTitle,
+                style: TextStyle(
+                  fontSize: AppDimensions.fontSizeXXSmall,
+                  color: watchTheme.colors.lightPrimary,
+                )),
+            Text(watchLanguage.languageTexts!.pages.settings.pages.widget.title,
+                style: const TextStyle(
+                  fontSize: AppDimensions.fontSizeSmall,
+                )),
+          ],
+        ),
       ),
+      body: const ReorderableExample(),
     );
   }
 }
@@ -39,14 +60,13 @@ class _ReorderableListViewExampleState extends State<ReorderableExample> {
   @override
   Widget build(BuildContext context) {
     ThemeProvider watchTheme = context.watch<ThemeProvider>();
-    ThemeProvider readTheme = context.read<ThemeProvider>();
+    LanguageProvider watchLanguage = context.watch<LanguageProvider>();
 
     WidgetShowProvider watchWidgetShow = context.watch<WidgetShowProvider>();
     WidgetShowProvider readWidgetShow = context.read<WidgetShowProvider>();
 
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final Color oddItemColor = colorScheme.primary.withOpacity(0.05);
-    final Color evenItemColor = colorScheme.primary.withOpacity(0.15);
 
     return Padding(
       padding: const EdgeInsets.all(AppDimensions.spacingMedium),
@@ -64,7 +84,7 @@ class _ReorderableListViewExampleState extends State<ReorderableExample> {
                 index < watchWidgetShow.listWidgets.length;
                 index += 1)
               Container(
-                key: Key('$index'),
+                key: Key('${watchWidgetShow.listWidgets[index].id}'),
                 decoration: BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
@@ -74,8 +94,9 @@ class _ReorderableListViewExampleState extends State<ReorderableExample> {
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: AppDimensions.spacingSmall),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppDimensions.spacingSmall,
+                  ),
                   child: ListTile(
                     trailing: MySwitchWidget(
                       value: watchWidgetShow.listWidgets[index].state,
@@ -86,15 +107,19 @@ class _ReorderableListViewExampleState extends State<ReorderableExample> {
                       },
                     ),
                     tileColor: oddItemColor,
-                    contentPadding: EdgeInsets.only(
+                    contentPadding: const EdgeInsets.only(
                       bottom: 0,
                       left: 0,
                       top: 0,
                       right: AppDimensions.spacingMedium,
                     ),
-                    title: Text(watchWidgetShow.listWidgets[index].title),
+                    title: Text(textWidget(
+                        id: watchWidgetShow.listWidgets[index].id,
+                        languageProvider: watchLanguage)[0]),
                     subtitle: Text(
-                      watchWidgetShow.listWidgets[index].subtitle,
+                      textWidget(
+                          id: watchWidgetShow.listWidgets[index].id,
+                          languageProvider: watchLanguage)[1],
                       style: TextStyle(
                         color: watchTheme.colors.lightPrimary,
                       ),
@@ -121,4 +146,22 @@ class _ReorderableListViewExampleState extends State<ReorderableExample> {
       ),
     );
   }
+}
+
+List<String> textWidget(
+    {required LanguageProvider languageProvider, required int id}) {
+  String title = "";
+  String subTitle = "";
+
+  List list =
+      languageProvider.languageTexts!.pages.settings.pages.widget.options;
+
+  for (int i = 0; i < list.length; i++) {
+    if (id == list[i].id) {
+      title = list[i].title;
+      subTitle = list[i].subTitle;
+    }
+  }
+
+  return [title, subTitle];
 }

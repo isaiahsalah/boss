@@ -25,13 +25,18 @@
             "slides": [
                 {
                     "id": "",
-                    "title": "Info 1",
-                    "subTitle": "Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500"
+                    "title": "Reportes",
+                    "subTitle": "Esta aplicación te ofrece reportes gráficos del desempeño de tu negocio en varios aspectos. Podrás ver estos reportes desde cualquier dispositivo y lugar. Así, podrás decidir mejor cómo mejorar tu negocio."
                 },
                 {
                     "id": "",
-                    "title": "Info 2",
-                    "subTitle": "Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500"
+                    "title": "Notificaciones",
+                    "subTitle": "Esta aplicación te mantiene informado de lo que pasa en tu empresa. Recibirás notificaciones en tiempo real sobre los eventos clave, como ventas, pagos, pedidos y más. Así, podrás controlar tu empresa y solucionar problemas rápidamente."
+                },
+                {
+                    "id": "",
+                    "title": "KPI",
+                    "subTitle": "Esta aplicación te muestra los KPI que te permiten medir el rendimiento de tu empresa. Podrás ver datos como el margen, el ROI, la satisfacción de los clientes y más. Estos datos te ayudarán a analizar tu negocio y el mercado."
                 }
             ],
             "button": {
@@ -54,6 +59,69 @@
         "stats": {
             "title": "Estadísticas",
             "subTitle": "Ve las estadistiacs de tu empresa por sectores",
+            "pages": {
+                "finance": {
+                    "title": "Finanzas",
+                    "subTitle": "Descipción General",
+                    "options": [
+                        {
+                            "title": "Configuraciones",
+                            "subTitle": "Configura las distintas variables de Boss"
+                        }
+                    ]
+                },
+                "sales": {
+                    "title": "Ventas",
+                    "subTitle": "Descripción Widgets",
+                    "options": [
+                        {
+                            "id": 0,
+                            "title": "widget1",
+                            "subTitle": "Configura las distintas variables de Boss"
+                        }
+                    ]
+                },
+                "purchases": {
+                    "title": "Compras",
+                    "subTitle": "Acerca de...",
+                    "options": [
+                        {
+                            "title": "noti1",
+                            "subTitle": "Configura las distintas variables de Boss"
+                        }
+                    ]
+                },
+                "production": {
+                    "title": "Producción",
+                    "subTitle": "Acerca de...",
+                    "options": [
+                        {
+                            "title": "Cambiar contraseña",
+                            "subTitle": "Configura las distintas variables de Boss"
+                        }
+                    ]
+                },
+                "humanResources": {
+                    "title": "Recursos Humanos",
+                    "subTitle": "Acerca de...",
+                    "options": [
+                        {
+                            "title": "Pregunta 1",
+                            "subTitle": "Configura las distintas variables de Boss"
+                        }
+                    ]
+                },
+                "about": {
+                    "title": "Acerda de...",
+                    "subTitle": "Acerca de...",
+                    "options": [
+                        {
+                            "title": "Pregunta 1",
+                            "subTitle": "Configura las distintas variables de Boss"
+                        }
+                    ]
+                }
+            },
             "items": [
                 {
                     "id": "",
@@ -106,30 +174,158 @@
         "settings": {
             "title": "Configuraciones",
             "subTitle": "Configura las distintas variables de Boss",
+            "pages": {
+                "general": {
+                    "title": "General",
+                    "subTitle": "Descipción General bla",
+                    "options": [
+                        {
+                            "title": "Configuraciones",
+                            "subTitle": "Configura las  variables de Boss"
+                        },
+                        {
+                            "title": "Filtro Predefinido",
+                            "subTitle": "Configura las distintas variables de Boss"
+                        },
+                        {
+                            "title": "Primer día de la semana",
+                            "subTitle": "Configura las distintas variables de Boss"
+                        },
+                        {
+                            "title": "Primer día del mes",
+                            "subTitle": "Configura las distintas variables de Boss"
+                        },
+                        {
+                            "title": "Lenguaje",
+                            "subTitle": "Configura las distintas variables de Boss"
+                        },
+                        {
+                            "title": "tema Oscuro",
+                            "subTitle": "Configura las distintas variables de Boss"
+                        }
+                    ]
+                },
+                "widget": {
+                    "title": "Widgets",
+                    "subTitle": "Descripcjión Widgets",
+                    "options": [
+                        {
+                            "id": 1,
+                            "title": "widget1",
+                            "subTitle": "Configura l4as distintas variables de Boss"
+                        },
+                        {
+                            "id": 2,
+                            "title": "widget2",
+                            "subTitle": "Configura las distintas variables de Boss"
+                        },
+                        {
+                            "id": 3,
+                            "title": "widget3",
+                            "subTitle": "Configura las distintas variables de Boss"
+                        },
+                        {
+                            "id": 4,
+                            "title": "widget4",
+                            "subTitle": "Configura las distintas variables de Boss"
+                        },
+                        {
+                            "id": 5,
+                            "title": "widget5",
+                            "subTitle": "Configura las distintas variables de Boss"
+                        },
+                        {
+                            "id": 6,
+                            "title": "widget6",
+                            "subTitle": "Configura las distintas variables de Boss"
+                        }
+                    ]
+                },
+                "notification": {
+                    "title": "Notificación",
+                    "subTitle": "Acerca de...",
+                    "options": [
+                        {
+                            "title": "noti1",
+                            "subTitle": "Configura las distintas variables de Boss"
+                        },
+                        {
+                            "title": "noti2",
+                            "subTitle": "Configura las distintas variables de Boss"
+                        },
+                        {
+                            "title": "noti3",
+                            "subTitle": "Configura las distintas variables de Boss"
+                        }
+                    ]
+                },
+                "profile": {
+                    "title": "Perfil",
+                    "subTitle": "Acerca de...",
+                    "options": [
+                        {
+                            "title": "Cambiar contraseña",
+                            "subTitle": "Configura las distintas variables de Boss"
+                        }
+                    ]
+                },
+                "help": {
+                    "title": "Ayuda y soporte",
+                    "subTitle": "Acerca de...",
+                    "options": [
+                        {
+                            "title": "Pregunta 1",
+                            "subTitle": "Configura las distintas variables de Boss"
+                        },
+                        {
+                            "title": "Pregunta 2",
+                            "subTitle": "Configura las distintas variables de Boss"
+                        },
+                        {
+                            "title": "Pregunta 3",
+                            "subTitle": "Configura las distintas variables de Boss"
+                        }
+                    ]
+                },
+                "about": {
+                    "title": "Acerda de...",
+                    "subTitle": "Acerca de...",
+                    "options": [
+                        {
+                            "title": "Singleton",
+                            "subTitle": "variables de Boss"
+                        }
+                    ]
+                }
+            },
             "items": [
                 {
                     "title": "General",
-                    "subTitle": "Descipción General"
+                    "subTitle": "Edita aspectos generales de Singleton Boss"
                 },
                 {
                     "title": "Widgets",
-                    "subTitle": "Descripción Widgets"
+                    "subTitle": "Selecciona los widgets de que te aparecen y el orden en el que te aparecen"
                 },
                 {
-                    "title": "Notificaión",
-                    "subTitle": "Acerca de..."
+                    "title": "Notificación",
+                    "subTitle": "Selecciona las notificaciones que quieres recibir"
                 },
                 {
                     "title": "Perfil",
-                    "subTitle": "Acerca de..."
+                    "subTitle": "Edita los aspectos principales de tu perfil"
                 },
                 {
                     "title": "Ayuda y soporte",
-                    "subTitle": "Acerca de..."
+                    "subTitle": "Si tienes dudas, aquí puedes encontrar algunas respuestas"
                 },
                 {
                     "title": "Acerda de...",
-                    "subTitle": "Acerca de..."
+                    "subTitle": "¿Quienes somos?"
+                },
+                {
+                    "title": "Cerrar Sesión",
+                    "subTitle": "Puedes inicar con otra cuenta o en otro momento"
                 }
             ]
         },

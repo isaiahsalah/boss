@@ -5,6 +5,8 @@ class ColorPalette {
   Color lightPrimary;
   Color lightBackground;
   Color background;
+  Color backgroundAlt;
+
   Color alternative;
   Color white;
   Color active;
@@ -16,6 +18,7 @@ class ColorPalette {
     required this.lightPrimary,
     required this.lightBackground,
     required this.background,
+    required this.backgroundAlt,
     required this.alternative,
     required this.white,
     required this.active,
@@ -30,6 +33,7 @@ class ThemeProvider with ChangeNotifier {
     lightPrimary: Color(0xFFF2E2D2),
     lightBackground: Color(0xFFA7B5BF),
     background: Color(0xFF627B8E),
+    backgroundAlt: Color(0xFF627B8E),
     alternative: Color(0xFFD4764E),
     white: Color(0xFFFFFFFF),
     active: Color(0xFFD4764E),
@@ -42,6 +46,7 @@ class ThemeProvider with ChangeNotifier {
     lightPrimary: Color(0xFFA7B5BF),
     lightBackground: Color(0xFF627B8E),
     background: Color(0xFF273C4C),
+    backgroundAlt: Color(0xff1B2A37),
     alternative: Color(0xFFF2E2D2),
     white: Color(0xFFFFFFFF),
     active: Color(0xFFD4764E),

@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:boss/providers/FilterDateProvider.dart';
 import 'package:boss/providers/ThemeProvider.dart';
 import 'package:boss/resources/AppDimensions.dart';
@@ -18,23 +20,33 @@ class FilterPage extends StatefulWidget {
 
 class _FilterPageState extends State<FilterPage> {
   //DateTime dateTime = DateTime(2016, 8, 3, 17, 45);
+  late DateTime _initDate;
+  late DateTime _endDate;
+  late int _filterState;
 
-  // This function displays a CupertinoModalPopup with a reasonable fixed height
-  // which hosts CupertinoDatePicker.
-  void _showDialog(Widget child) {
+  @override
+  void initState() {
+    super.initState();
+    _initDate =
+        Provider.of<DateTimeProvider>(context, listen: false).dateTimeInit;
+    _endDate =
+        Provider.of<DateTimeProvider>(context, listen: false).dateTimeFin;
+    _filterState =
+        Provider.of<DateTimeProvider>(context, listen: false).filterState;
+  }
+
+  void _showDialog({required Widget child, required DateTimeProvider read}) {
+    read.filterStateChange(4);
+
     showCupertinoModalPopup<void>(
       context: context,
       builder: (BuildContext context) => Container(
         height: 216,
         padding: const EdgeInsets.only(top: 6.0),
-        // The Bottom margin is provided to align the popup above the system
-        // navigation bar.
         margin: EdgeInsets.only(
           bottom: MediaQuery.of(context).viewInsets.bottom,
         ),
-        // Provide a background color for the popup.
         color: CupertinoColors.systemBackground.resolveFrom(context),
-        // Use a SafeArea widget to avoid system overlaps.
         child: SafeArea(
           top: false,
           child: child,
@@ -49,20 +61,16 @@ class _FilterPageState extends State<FilterPage> {
     DateTimeProvider read = context.read<DateTimeProvider>();
 
     ThemeProvider watchTheme = context.watch<ThemeProvider>();
-    ThemeProvider readTheme = context.read<ThemeProvider>();
-
-    final DateTime dateInit = watch.dateTimeInit.copyWith();
-    final DateTime dateEnd = watch.dateTimeFin.copyWith();
 
     void onPressedCancel() => {
-          read.dateTimeFinChange(dateEnd),
-          read.dateTimeInitChange(dateInit),
-          print(dateInit),
+          read.dateTimeFinChange(_endDate),
+          read.dateTimeInitChange(_initDate),
+          read.filterStateChange(_filterState),
           Navigator.pop(context)
         };
-    void onPressedConfirm() => {Navigator.pop(context)};
+    void onPressedConfirm() => Navigator.pop(context);
     return Scaffold(
-      appBar: MyAppBarWidget(
+      appBar: const MyAppBarWidget(
         title: "Filtro",
         subTitle: "Descripción",
         leading: Icon(Icons.filter_alt_rounded),
@@ -70,65 +78,71 @@ class _FilterPageState extends State<FilterPage> {
       ),
       body: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: AppDimensions.spacingSmall,
           ),
           MyCardWidget(
+            header: false,
             title: "Filtro",
             description: "",
             footer: false,
-            widgetContend: Container(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  SizedBox(height: AppDimensions.spacingSmall),
-                  myFilterControl(read: read, watch: watch),
-                  SizedBox(height: AppDimensions.spacingMedium),
-                  DateFilter(
-                      datetime: watch.dateTimeInit,
-                      datetimechange: read.dateTimeInitChange,
-                      watchTheme: watchTheme),
-                  SizedBox(height: AppDimensions.spacingSmall),
-                  DateFilter(
-                      datetime: watch.dateTimeFin,
-                      datetimechange: read.dateTimeFinChange,
-                      watchTheme: watchTheme),
-                  SizedBox(height: AppDimensions.spacingMedium),
-                  Row(
-                    children: [],
-                  ),
-                  Row(
-                    children: [
-                      MyButtonWidget(
-                        text: "Cancelar",
-                        onPressed: onPressedCancel,
-                        color: watchTheme.colors.lightBackground,
-                      ),
-                      SizedBox(
-                        width: AppDimensions.spacingSmall,
-                      ),
-                      MyButtonWidget(
-                        text: "Filtrar",
-                        onPressed: onPressedConfirm,
-                        color: watchTheme.colors.active,
-                      ),
-                    ],
-                  )
-                ],
-              ),
+            widgetContend: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                const SizedBox(height: AppDimensions.spacingSmall),
+                myFilterControl(
+                    watchTheme: watchTheme, read: read, watch: watch),
+                const SizedBox(height: AppDimensions.spacingMedium),
+                DateFilterInit(
+                    readDateTime: read,
+                    datetimeInit: watch.dateTimeInit,
+                    datetimeEnd: watch.dateTimeInit,
+                    datetimechange: read.dateTimeInitChange,
+                    watchTheme: watchTheme),
+                const SizedBox(height: AppDimensions.spacingSmall),
+                DateFilterEnd(
+                    readDateTime: read,
+                    datetimeInit: watch.dateTimeInit,
+                    datetimeEnd: watch.dateTimeFin,
+                    datetimechange: read.dateTimeFinChange,
+                    watchTheme: watchTheme),
+                const SizedBox(height: AppDimensions.spacingMedium),
+                const Row(
+                  children: [],
+                ),
+                Row(
+                  children: [
+                    MyButtonWidget(
+                      text: "Cancelar",
+                      onPressed: onPressedCancel,
+                      color: watchTheme.colors.lightBackground,
+                    ),
+                    const SizedBox(
+                      width: AppDimensions.spacingSmall,
+                    ),
+                    MyButtonWidget(
+                      text: "Filtrar",
+                      onPressed: onPressedConfirm,
+                      color: watchTheme.colors.active,
+                    ),
+                  ],
+                )
+              ],
             ),
           ),
         ],
       ),
     );
-    ;
   }
 
 //context.watch<DateTimeProvider>().dateTimeInit
-  Widget DateFilter({
-    required DateTime datetime,
+  // ignore: non_constant_identifier_names
+  Widget DateFilterInit({
+    required DateTime datetimeInit,
+    required DateTime datetimeEnd,
     required Function datetimechange,
     required ThemeProvider watchTheme,
+    required DateTimeProvider readDateTime,
   }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -150,22 +164,22 @@ class _FilterPageState extends State<FilterPage> {
               padding: EdgeInsets.zero,
               color: Colors.transparent,
               child: Text(
-                '${datetime.day.toString().padLeft(2, '0')}/${datetime.month.toString().padLeft(2, '0')}/${datetime.year}',
+                '${datetimeInit.day.toString().padLeft(2, '0')}/${datetimeInit.month.toString().padLeft(2, '0')}/${datetimeInit.year}',
                 style: const TextStyle(
                   fontSize: AppDimensions.fontSizeSmall,
                 ),
               ),
               onPressed: () => _showDialog(
-                CupertinoDatePicker(
-                  initialDateTime: datetime,
+                read: readDateTime,
+                child: CupertinoDatePicker(
+                  initialDateTime: datetimeInit,
                   mode: CupertinoDatePickerMode.date,
                   use24hFormat: true,
-
-                  // This shows day of week alongside day of month
                   showDayOfWeek: true,
-                  // This is called when the user changes the date.
                   onDateTimeChanged: (DateTime newDate) {
-                    datetimechange(newDate);
+                    if (newDate.isBefore(datetimeEnd)) {
+                      datetimechange(newDate);
+                    }
                   },
                 ),
               ),
@@ -188,19 +202,120 @@ class _FilterPageState extends State<FilterPage> {
               padding: EdgeInsets.zero,
               color: Colors.transparent,
               child: Text(
-                '${datetime.hour.toString().padLeft(2, '0')}:${datetime.minute.toString().padLeft(2, '0')}',
+                '${datetimeInit.hour.toString().padLeft(2, '0')}:${datetimeInit.minute.toString().padLeft(2, '0')}',
                 style: const TextStyle(
                   fontSize: AppDimensions.fontSizeSmall,
                 ),
               ),
               onPressed: () => _showDialog(
-                CupertinoDatePicker(
-                  initialDateTime: datetime,
+                read: readDateTime,
+                child: CupertinoDatePicker(
+                  initialDateTime: datetimeInit,
                   mode: CupertinoDatePickerMode.time,
                   use24hFormat: true,
                   // This is called when the user changes the time.
                   onDateTimeChanged: (DateTime newTime) {
-                    datetimechange(newTime);
+                    if (newTime.isBefore(datetimeEnd)) {
+                      datetimechange(newTime);
+                    } else {
+                      datetimechange(datetimeInit);
+                    }
+                  },
+                ),
+              ),
+              // In this example, the time value is formatted manually.
+              // You can use the intl package to format the value based on
+              // the user's locale settings.
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget DateFilterEnd({
+    required DateTime datetimeInit,
+    required DateTime datetimeEnd,
+    required Function datetimechange,
+    required ThemeProvider watchTheme,
+    required DateTimeProvider readDateTime,
+  }) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: <Widget>[
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Fecha de fin",
+              style: TextStyle(
+                fontSize: AppDimensions.fontSizeXSmall,
+                color: watchTheme.colors.lightPrimary,
+              ),
+            ),
+            CupertinoButton(
+              borderRadius: BorderRadius.zero,
+              minSize: AppDimensions.fontSizeSmall,
+              padding: EdgeInsets.zero,
+              color: Colors.transparent,
+              child: Text(
+                '${datetimeEnd.day.toString().padLeft(2, '0')}/${datetimeEnd.month.toString().padLeft(2, '0')}/${datetimeEnd.year}',
+                style: const TextStyle(
+                  fontSize: AppDimensions.fontSizeSmall,
+                ),
+              ),
+              onPressed: () => _showDialog(
+                read: readDateTime,
+                child: CupertinoDatePicker(
+                  initialDateTime: datetimeEnd,
+                  mode: CupertinoDatePickerMode.date,
+                  use24hFormat: true,
+                  showDayOfWeek: true,
+                  onDateTimeChanged: (DateTime newDate) {
+                    if (newDate.isAfter(datetimeInit)) {
+                      datetimechange(newDate);
+                    } else {
+                      datetimechange(datetimeEnd);
+                    }
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text(
+              "Hora de fin",
+              style: TextStyle(
+                fontSize: AppDimensions.fontSizeXSmall,
+                color: watchTheme.colors.lightPrimary,
+              ),
+            ),
+            CupertinoButton(
+              borderRadius: BorderRadius.zero,
+              minSize: AppDimensions.fontSizeSmall,
+              padding: EdgeInsets.zero,
+              color: Colors.transparent,
+              child: Text(
+                '${datetimeEnd.hour.toString().padLeft(2, '0')}:${datetimeEnd.minute.toString().padLeft(2, '0')}',
+                style: const TextStyle(
+                  fontSize: AppDimensions.fontSizeSmall,
+                ),
+              ),
+              onPressed: () => _showDialog(
+                read: readDateTime,
+                child: CupertinoDatePicker(
+                  initialDateTime: datetimeEnd,
+                  mode: CupertinoDatePickerMode.time,
+                  use24hFormat: true,
+                  // This is called when the user changes the time.
+                  onDateTimeChanged: (DateTime newTime) {
+                    if (newTime.isAfter(datetimeInit)) {
+                      datetimechange(newTime);
+                    }
                   },
                 ),
               ),

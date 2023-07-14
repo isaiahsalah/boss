@@ -66,14 +66,14 @@ class MyAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        '${watch.dateTimeInit.day.toString().padLeft(2, '0')}/${watch.dateTimeInit.month.toString().padLeft(2, '0')}/${watch.dateTimeInit.year}',
+                        '${watch.dateTimeInit.day.toString().padLeft(2, '0')}/${watch.dateTimeInit.month.toString().padLeft(2, '0')}/${watch.dateTimeInit.year.toString().substring(2)}',
                         style: TextStyle(
                           fontSize: AppDimensions.fontSizeXXSmall,
                           color: watchTheme.colors.lightPrimary,
                         ),
                       ),
                       Text(
-                        '${watch.dateTimeFin.day.toString().padLeft(2, '0')}/${watch.dateTimeFin.month.toString().padLeft(2, '0')}/${watch.dateTimeFin.year}',
+                        '${watch.dateTimeFin.day.toString().padLeft(2, '0')}/${watch.dateTimeFin.month.toString().padLeft(2, '0')}/${watch.dateTimeFin.year.toString().substring(2)}',
                         style: TextStyle(
                           fontSize: AppDimensions.fontSizeXXSmall,
                           color: watchTheme.colors.lightPrimary,

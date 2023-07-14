@@ -4,6 +4,7 @@ import 'package:boss/resources/AppDimensions.dart';
 import 'package:boss/widgets/components/MyComboBoxWidget.dart';
 import 'package:boss/widgets/components/MyListTileGeneralWidget.dart';
 import 'package:boss/widgets/components/MySwithWidget.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -24,17 +25,78 @@ class _GeneralPageState extends State<GeneralPage> {
     LanguageProvider readLanguage = context.read<LanguageProvider>();
     ThemeProvider watchTheme = context.watch<ThemeProvider>();
     ThemeProvider readTheme = context.read<ThemeProvider>();
+
+    List<dynamic> myListMenuSettingGeneral = [
+      MySwitchWidget(
+        value: _lights,
+        onChanged: (bool value) {
+          setState(() {
+            _lights = value;
+          });
+        },
+      ),
+      MyComboBoxWidget(
+        listData: list,
+        dropdownValue: dropdownValue,
+        onChange: (String? value) {
+          setState(() {
+            dropdownValue = value!;
+          });
+        },
+      ),
+      MyComboBoxWidget(
+        listData: list,
+        dropdownValue: dropdownValue,
+        onChange: (String? value) {
+          setState(() {
+            dropdownValue = value!;
+          });
+        },
+      ),
+      MyComboBoxWidget(
+        listData: list,
+        dropdownValue: dropdownValue,
+        onChange: (String? value) {
+          setState(() {
+            dropdownValue = value!;
+          });
+        },
+      ),
+      MyComboBoxWidget(
+        listData: watchLanguage.listLanguage,
+        dropdownValue: watchLanguage.dropdownValue,
+        onChange: (String? value) {
+          readLanguage.languageChange(lang: value!);
+
+          /*setState(() {
+                        dropdownValue = value!;
+                      });*/
+        },
+      ),
+      MySwitchWidget(
+        value: watchTheme.isDarkTheme,
+        onChanged: (bool value) {
+          setState(() {
+            readTheme.updateColors();
+          });
+        },
+      )
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("subTitle",
+            Text(
+                watchLanguage
+                    .languageTexts!.pages.settings.pages.general.subTitle,
                 style: TextStyle(
                   fontSize: AppDimensions.fontSizeXXSmall,
                   color: watchTheme.colors.lightPrimary,
                 )),
-            Text(watchLanguage.languageTexts!.appTitle,
+            Text(
+                watchLanguage.languageTexts!.pages.settings.pages.general.title,
                 style: TextStyle(
                   fontSize: AppDimensions.fontSizeSmall,
                 )),
@@ -48,91 +110,15 @@ class _GeneralPageState extends State<GeneralPage> {
             padding: const EdgeInsets.all(AppDimensions.spacingMedium),
             child: Column(
               mainAxisSize: MainAxisSize.min,
-              children: [
-                MyListTileGeneralWidget(
-                  title: "title",
-                  subtitle: "wdfsefes",
-                  trailing: MySwitchWidget(
-                    value: _lights,
-                    onChanged: (bool value) {
-                      setState(() {
-                        _lights = value;
-                      });
-                    },
-                  ),
-                ),
-                Divider(height: 1),
-                MyListTileGeneralWidget(
-                  title: "title",
-                  subtitle: "wdfsefes",
-                  trailing: MyComboBoxWidget(
-                    listData: list,
-                    dropdownValue: dropdownValue,
-                    onChange: (String? value) {
-                      setState(() {
-                        dropdownValue = value!;
-                      });
-                    },
-                  ),
-                ),
-                Divider(height: 1),
-                MyListTileGeneralWidget(
-                  title: "title",
-                  subtitle: "wdfsefes",
-                  trailing: MyComboBoxWidget(
-                    listData: list,
-                    dropdownValue: dropdownValue,
-                    onChange: (String? value) {
-                      setState(() {
-                        dropdownValue = value!;
-                      });
-                    },
-                  ),
-                ),
-                Divider(height: 1),
-                MyListTileGeneralWidget(
-                  title: "title",
-                  subtitle: "wdfsefes",
-                  trailing: MyComboBoxWidget(
-                    listData: list,
-                    dropdownValue: dropdownValue,
-                    onChange: (String? value) {
-                      setState(() {
-                        dropdownValue = value!;
-                      });
-                    },
-                  ),
-                ),
-                Divider(height: 1),
-                MyListTileGeneralWidget(
-                  title: "Lenguaje",
-                  subtitle: "descripcion",
-                  trailing: MyComboBoxWidget(
-                    listData: watchLanguage.listLanguage,
-                    dropdownValue: watchLanguage.dropdownValue,
-                    onChange: (String? value) {
-                      readLanguage.languageChange(lang: value!);
-
-                      /*setState(() {
-                        dropdownValue = value!;
-                      });*/
-                    },
-                  ),
-                ),
-                Divider(height: 1),
-                MyListTileGeneralWidget(
-                  title: "Tema Oscuro",
-                  subtitle: "descripcion",
-                  trailing: MySwitchWidget(
-                    value: watchTheme.isDarkTheme,
-                    onChanged: (bool value) {
-                      setState(() {
-                        readTheme.updateColors();
-                      });
-                    },
-                  ),
-                ),
-              ],
+              children: watchLanguage
+                  .languageTexts!.pages.settings.pages.general.options
+                  .mapIndexed(
+                    (i, item) => MyListTileGeneralWidget(
+                        title: item.title,
+                        subtitle: item.subTitle.toString(),
+                        trailing: myListMenuSettingGeneral[i]),
+                  )
+                  .toList(),
             ),
           ),
           decoration: BoxDecoration(

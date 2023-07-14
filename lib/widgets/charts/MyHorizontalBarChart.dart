@@ -36,6 +36,7 @@ class _MyHorizontalBarChartWidgetState
         : 600;
     double height = MediaQuery.of(context).size.height;
     return MyCardWidget(
+        header: false,
         title: widget.title,
         description: widget.description,
         footer: true,

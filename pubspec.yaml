@@ -43,6 +43,8 @@ dependencies:
   carousel_slider: ^4.2.1
   collection: ^1.17.1
   intl: ^0.18.1
+  flutter_echarts: #latest version
+  shared_preferences: ^2.2.0
 
 dev_dependencies:
   flutter_test:
@@ -67,11 +69,11 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/corbata.png
-    - assets/images/theStrokes.jpg
-    - assets/images/theStrokesAlt.jpg
-    - assets/images/danielQuien.jpg
-    - assets/images/littleJesus.jpg
+    - assets/images/mobile-app.png
+    - assets/images/project.png
+    - assets/images/report.png
+    - assets/images/seo.png
+    - assets/images/logo.png
     - assets/languages/es.json
     - assets/languages/en.json
     - assets/languages/fr.json

@@ -1,0 +1,348 @@
+{
+    "appTitle": "Singleton Boss",
+    "appDescription": "This is the app description",
+    "charts": [
+        {
+            "id": "",
+            "title": "",
+            "description": ""
+        },
+        {
+            "id": "",
+            "title": "",
+            "description": ""
+        },
+        {
+            "id": "",
+            "title": "",
+            "description": ""
+        }
+    ],
+    "pages": {
+        "tutorial": {
+            "title": "Tutorial",
+            "subTitle": "Get informed with the main Widgets",
+            "slides": [
+                {
+                    "id": "",
+                    "title": "Reports",
+                    "subTitle": "This application provides graphical reports of your business performance in various aspects. You can view these reports from any device and location. This way, you can make better decisions to improve your business."
+                },
+                {
+                    "id": "",
+                    "title": "Notifications",
+                    "subTitle": "This application keeps you informed about what's happening in your company. You'll receive real-time notifications about key events, such as sales, payments, orders, and more. This way, you can manage your company and solve problems quickly."
+                },
+                {
+                    "id": "",
+                    "title": "KPI",
+                    "subTitle": "This application shows you the KPIs that allow you to measure your company's performance. You can see data such as margin, ROI, customer satisfaction, and more. This data will help you analyze your business and the market."
+                }
+            ],
+            "button": {
+                "top": "Next",
+                "bottom": "Skip Tutorial"
+            }
+        },
+        "login": {
+            "title": "Login",
+            "subTitle": "Login description",
+            "userPlaceholder": "Username",
+            "passwordPlaceholder": "Password",
+            "recoverPassword": "Recover Password",
+            "button": "Login"
+        },
+        "board": {
+            "title": "Home",
+            "subTitle": "Get informed with the main Widgets"
+        },
+        "stats": {
+            "title": "Statistics",
+            "subTitle": "View the statistics of your company by sectors",
+            "pages": {
+                "finance": {
+                    "title": "Finance",
+                    "subTitle": "General Description",
+                    "options": [
+                        {
+                            "title": "Settings",
+                            "subTitle": "Configure various Boss variables"
+                        }
+                    ]
+                },
+                "sales": {
+                    "title": "Sales",
+                    "subTitle": "Widgets Description",
+                    "options": [
+                        {
+                            "id": 0,
+                            "title": "widget1",
+                            "subTitle": "Configure various Boss variables"
+                        }
+                    ]
+                },
+                "purchases": {
+                    "title": "Purchases",
+                    "subTitle": "About...",
+                    "options": [
+                        {
+                            "title": "noti1",
+                            "subTitle": "Configure various Boss variables"
+                        }
+                    ]
+                },
+                "production": {
+                    "title": "Production",
+                    "subTitle": "About...",
+                    "options": [
+                        {
+                            "title": "Change Password",
+                            "subTitle": "Configure various Boss variables"
+                        }
+                    ]
+                },
+                "humanResources": {
+                    "title": "Human Resources",
+                    "subTitle": "About...",
+                    "options": [
+                        {
+                            "title": "Question 1",
+                            "subTitle": "Configure various Boss variables"
+                        }
+                    ]
+                },
+                "about": {
+                    "title": "About...",
+                    "subTitle": "About...",
+                    "options": [
+                        {
+                            "title": "Question 1",
+                            "subTitle": "Configure various Boss variables"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "id": "",
+                    "title": "Finance",
+                    "subTitle": "General Description"
+                },
+                {
+                    "id": "",
+                    "title": "Sales",
+                    "subTitle": "General Description"
+                },
+                {
+                    "id": "",
+                    "title": "Purchases",
+                    "subTitle": "General Description"
+                },
+                {
+                    "id": "",
+                    "title": "Production",
+                    "subTitle": "General Description"
+                },
+                {
+                    "id": "",
+                    "title": "Human Resources",
+                    "subTitle": "General Description"
+                }
+            ]
+        },
+        "notifications": {
+            "title": "Notifications",
+            "subTitle": "View notifications",
+            "items": [
+                {
+                    "id": "",
+                    "title": "",
+                    "subTitle": ""
+                },
+                {
+                    "id": "",
+                    "title": "",
+                    "subTitle": ""
+                },
+                {
+                    "id": "",
+                    "title": "",
+                    "subTitle": ""
+                }
+            ]
+        },
+        "settings": {
+            "title": "Settings",
+            "subTitle": "Configure various Boss variables",
+            "pages": {
+                "general": {
+                    "title": "General",
+                    "subTitle": "General Description bla",
+                    "options": [
+                        {
+                            "title": "Settings",
+                            "subTitle": "Configure Boss variables"
+                        },
+                        {
+                            "title": "Default Filter",
+                            "subTitle": "Configure various Boss variables"
+                        },
+                        {
+                            "title": "First Day of the Week",
+                            "subTitle": "Configure various Boss variables"
+                        },
+                        {
+                            "title": "First Day of the Month",
+                            "subTitle": "Configure various Boss variables"
+                        },
+                        {
+                            "title": "Language",
+                            "subTitle": "Configure various Boss variables"
+                        },
+                        {
+                            "title": "Dark Theme",
+                            "subTitle": "Configure various Boss variables"
+                        }
+                    ]
+                },
+                "widget": {
+                    "title": "Widgets",
+                    "subTitle": "Widgets Description",
+                    "options": [
+                        {
+                            "id": 1,
+                            "title": "widget1",
+                            "subTitle": "Configure various Boss variables"
+                        },
+                        {
+                            "id": 2,
+                            "title": "widget2",
+                            "subTitle": "Configure various Boss variables"
+                        },
+                        {
+                            "id": 3,
+                            "title": "widget3",
+                            "subTitle": "Configure various Boss variables"
+                        },
+                        {
+                            "id": 4,
+                            "title": "widget4",
+                            "subTitle": "Configure various Boss variables"
+                        },
+                        {
+                            "id": 5,
+                            "title": "widget5",
+                            "subTitle": "Configure various Boss variables"
+                        },
+                        {
+                            "id": 6,
+                            "title": "widget6",
+                            "subTitle": "Configure various Boss variables"
+                        }
+                    ]
+                },
+                "notification": {
+                    "title": "Notification",
+                    "subTitle": "About...",
+                    "options": [
+                        {
+                            "title": "noti1",
+                            "subTitle": "Configure various Boss variables"
+                        },
+                        {
+                            "title": "noti2",
+                            "subTitle": "Configure various Boss variables"
+                        },
+                        {
+                            "title": "noti3",
+                            "subTitle": "Configure various Boss variables"
+                        }
+                    ]
+                },
+                "profile": {
+                    "title": "Profile",
+                    "subTitle": "About...",
+                    "options": [
+                        {
+                            "title": "Change Password",
+                            "subTitle": "Configure various Boss variables"
+                        }
+                    ]
+                },
+                "help": {
+                    "title": "Help and Support",
+                    "subTitle": "About...",
+                    "options": [
+                        {
+                            "title": "Question 1",
+                            "subTitle": "Configure various Boss variables"
+                        },
+                        {
+                            "title": "Question 2",
+                            "subTitle": "Configure various Boss variables"
+                        },
+                        {
+                            "title": "Question 3",
+                            "subTitle": "Configure various Boss variables"
+                        }
+                    ]
+                },
+                "about": {
+                    "title": "About...",
+                    "subTitle": "About...",
+                    "options": [
+                        {
+                            "title": "Singleton",
+                            "subTitle": "Boss variables"
+                        }
+                    ]
+                }
+            },
+            "items": [
+                {
+                    "title": "General",
+                    "subTitle": "Edit general aspects of Singleton Boss"
+                },
+                {
+                    "title": "Widgets",
+                    "subTitle": "Select the widgets that appear and their order"
+                },
+                {
+                    "title": "Notification",
+                    "subTitle": "Select the notifications you want to receive"
+                },
+                {
+                    "title": "Profile",
+                    "subTitle": "Edit the main aspects of your profile"
+                },
+                {
+                    "title": "Help and Support",
+                    "subTitle": "If you have questions, you can find some answers here"
+                },
+                {
+                    "title": "About...",
+                    "subTitle": "Who are we?"
+                },
+                {
+                    "title": "Log Out",
+                    "subTitle": "You can log in with another account or at another time"
+                }
+            ]
+        },
+        "filter": {
+            "title": "Filter",
+            "subTitle": "Choose the time range for your widgets",
+            "description": "Choose the time range in which your widgets will be displayed",
+            "dateTimeOpen": {
+                "date": "Start Date",
+                "time": "Start Time"
+            },
+            "dateTimeEnd": {
+                "date": "End Date",
+                "time": "End Time"
+            },
+            "buttonCancel": "Cancel",
+            "buttonFilter": "Filter"
+        }
+    }
+}

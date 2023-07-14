@@ -1,4 +1,7 @@
+// ignore_for_file: file_names
+
 import 'package:boss/providers/FilterDateProvider.dart';
+import 'package:boss/providers/ThemeProvider.dart';
 import 'package:boss/widgets/main/MyCardWidget.dart';
 import 'package:boss/widgets/components/MySlidingControlWidget.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,25 +19,31 @@ class _MyFilterWidgetState extends State<MyFilterWidget> {
   int? groupValue = 0;
   @override
   Widget build(BuildContext context) {
+    ThemeProvider watchTheme = context.watch<ThemeProvider>();
+
     DateTimeProvider watch = context.watch<DateTimeProvider>();
     DateTimeProvider read = context.read<DateTimeProvider>();
     return MyCardWidget(
+      header: false,
       title: "title",
       description: "",
       footer: false,
       widgetContend: Column(
         children: [
-          myFilterControl(read: read, watch: watch),
+          myFilterControl(read: read, watch: watch, watchTheme: watchTheme),
         ],
       ),
     );
   }
 }
 
-Widget myFilterControl({required read, required watch}) {
+Widget myFilterControl(
+    {required read, required watch, required ThemeProvider watchTheme}) {
   return MySlidingControlWidget(
+    backColor: watchTheme.colors.lightBackground,
+    color: watchTheme.colors.primary,
     initialValue: watch.filterState,
-    itemsMenu: {
+    itemsMenu: const {
       1: Text('Semana'),
       2: Text('Mes'),
       3: Text('Año'),

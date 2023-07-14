@@ -53,6 +53,7 @@ class MyVerticalBarChartWidgetState extends State<MyVerticalBarChartWidget> {
   Widget build(BuildContext context) {
     ThemeProvider watchTheme = context.watch<ThemeProvider>();
     return MyCardWidget(
+      header: false,
       title: widget.title,
       description: widget.description,
       footer: false,

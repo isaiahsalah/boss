@@ -1,5 +1,6 @@
+// ignore_for_file: file_names
+
 import 'package:boss/providers/LanguageProvider.dart';
-import 'package:boss/providers/ThemeProvider.dart';
 import 'package:boss/resources/AppResources.dart';
 import 'package:boss/widgets/main/MyListTile.dart';
 import 'package:collection/collection.dart';
@@ -11,10 +12,8 @@ class SettingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ThemeProvider watchTheme = context.watch<ThemeProvider>();
     LanguageProvider watchLanguage = context.watch<LanguageProvider>();
 
-    ThemeProvider readTheme = context.read<ThemeProvider>();
     return Scaffold(
       body: ListView(
         padding: const EdgeInsets.all(AppDimensions.spacingMedium),
@@ -24,15 +23,14 @@ class SettingPage extends StatelessWidget {
                 children: [
                   MyListTile(
                     title: item.title,
-                    subTitle: item.subTitle,
-                    leading: AppData.myListMenuGeneral[i]["leading"],
-                    trailing: Icon(Icons.arrow_forward_ios_rounded),
+                    subTitle: item.subTitle.toString(),
+                    leading: AppData.myListMenuSetting[i]["leading"],
+                    trailing: const Icon(Icons.arrow_forward_ios_rounded),
                     onPressed: () {
-                      Navigator.pushNamed(
-                          context, AppData.myListMenuGeneral[i]["onPressed"]);
+                      AppData.myListMenuSetting[i]["onPressed"](context);
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   )
                 ],

@@ -8,10 +8,11 @@ class ExampleLineChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyLineChartWidget(
-      title: "Titulito",
-      description: "bal bla",
-      lineListTitle: "Item",
-      lineListAltTitle: "ItemAlt",
+      title: "Ingresos y Egresos",
+      description:
+          "Aquí puede ver los diferentes ingresos y egresos de su negocio",
+      lineListTitle: "Ingresos",
+      lineListAltTitle: "Egresos",
       lineList: [
         ChartDataModel(title: "title", date: DateTime(2022, 1, 2), value: 444),
         ChartDataModel(title: "title", date: DateTime(2022, 1, 3), value: 256),
@@ -19,14 +20,21 @@ class ExampleLineChart extends StatelessWidget {
         ChartDataModel(title: "title", date: DateTime(2022, 1, 5), value: 1500),
         ChartDataModel(title: "title", date: DateTime(2022, 1, 6), value: 500),
         ChartDataModel(title: "title", date: DateTime(2022, 1, 7), value: 600),
+        ChartDataModel(title: "title", date: DateTime(2022, 1, 9), value: 1200),
+        ChartDataModel(title: "title", date: DateTime(2022, 1, 10), value: 980),
       ],
       lineListAlt: [
-        ChartDataModel(title: "title", date: DateTime(2022, 1, 2), value: 500),
-        ChartDataModel(title: "title", date: DateTime(2022, 1, 3), value: 256),
-        ChartDataModel(title: "title", date: DateTime(2022, 1, 4), value: 2000),
-        ChartDataModel(title: "title", date: DateTime(2022, 1, 6), value: 150),
-        ChartDataModel(title: "title", date: DateTime(2022, 1, 7), value: 900),
-        ChartDataModel(title: "title", date: DateTime(2022, 1, 8), value: 900),
+        ChartDataModel(title: "title", date: DateTime(2022, 1, 2), value: -500),
+        ChartDataModel(title: "title", date: DateTime(2022, 1, 3), value: -256),
+        ChartDataModel(
+            title: "title", date: DateTime(2022, 1, 4), value: -2000),
+        ChartDataModel(title: "title", date: DateTime(2022, 1, 6), value: -150),
+        ChartDataModel(title: "title", date: DateTime(2022, 1, 7), value: -900),
+        ChartDataModel(title: "title", date: DateTime(2022, 1, 8), value: -850),
+        ChartDataModel(
+            title: "title", date: DateTime(2022, 1, 9), value: -1200),
+        ChartDataModel(
+            title: "title", date: DateTime(2022, 1, 10), value: -750),
       ],
     );
   }

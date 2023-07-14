@@ -1,6 +1,5 @@
 import 'package:boss/providers/LanguageProvider.dart';
 import 'package:boss/resources/AppResources.dart';
-import 'package:boss/services/NotificationServices.dart';
 import 'package:boss/widgets/main/MyListTile.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +26,9 @@ class StatsPage extends StatelessWidget {
                     trailing: Icon(Icons.arrow_forward_ios_rounded),
                     onPressed: () {
                       Navigator.pushNamed(
-                          context, AppData.myListMenuStats[i]["onPressed"]);
+                        context,
+                        AppData.myListMenuStats[i]["onPressed"],
+                      );
                     },
                   ),
                   SizedBox(

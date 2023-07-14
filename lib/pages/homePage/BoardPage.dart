@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:boss/providers/WidgetShowProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -19,12 +21,16 @@ class _BoardPageState extends State<BoardPage> {
   @override
   Widget build(BuildContext context) {
     WidgetShowProvider watchWidgetShow = context.watch<WidgetShowProvider>();
+    List<Widget> widgetList = [
+      SizedBox(
+        height: 20,
+      )
+    ];
 
-    return Scaffold(
-        body: ListView(
-            children: watchWidgetShow.listWidgets
-                .where((itemWidget) => itemWidget.state == true)
-                .map((itemWidget) => itemWidget.widget)
-                .toList()));
+    widgetList.addAll(watchWidgetShow.listWidgets
+        .where((itemWidget) => itemWidget.state == true)
+        .map((itemWidget) => itemWidget.widget)
+        .toList());
+    return Scaffold(body: ListView(children: widgetList));
   }
 }

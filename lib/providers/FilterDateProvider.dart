@@ -12,13 +12,11 @@ class DateTimeProvider with ChangeNotifier {
 
   Future<void> dateTimeInitChange(DateTime dateTimeInit) async {
     _dateTimeInit = dateTimeInit;
-    _filterState = 4;
     notifyListeners();
   }
 
   Future<void> dateTimeFinChange(DateTime dateTimeFin) async {
     _dateTimeFin = dateTimeFin;
-    _filterState = 4;
     notifyListeners();
   }
 

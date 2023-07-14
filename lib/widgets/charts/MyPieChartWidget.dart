@@ -41,6 +41,7 @@ class _MyPieChartWidgetState extends State<MyPieChartWidget> {
     ThemeProvider watchTheme = context.watch<ThemeProvider>();
     ThemeProvider readTheme = context.read<ThemeProvider>();
     return MyCardWidget(
+        header: false,
         title: widget.title,
         description: widget.description,
         footer: true,
@@ -50,7 +51,7 @@ class _MyPieChartWidgetState extends State<MyPieChartWidget> {
               children: <Widget>[
                 Expanded(
                   child: Container(
-                    height: 350,
+                    height: 300,
                     child: Stack(
                       children: [
                         PieChart(
@@ -123,6 +124,8 @@ class _MyPieChartWidgetState extends State<MyPieChartWidget> {
               ],
             ),
             MySlidingControlWidget(
+              backColor: watchTheme.colors.lightBackground,
+              color: watchTheme.colors.primary,
               initialValue: 1,
               onValueChanged: (i) {
                 if (i == 1) {
@@ -172,6 +175,15 @@ class _MyPieChartWidgetState extends State<MyPieChartWidget> {
     }).toList();
   }
 }
+
+Color colorRandom() {
+  math.Random random = math.Random();
+  int red = random.nextInt(150) + 50;
+  int green = random.nextInt(150) + 50;
+  int blue = random.nextInt(150) + 50;
+  return Color.fromRGBO(red, green, blue, 1);
+}
+
 
 /*
 

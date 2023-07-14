@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:boss/resources/AppDimensions.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +8,7 @@ DataColumn titleTable(String title) {
     label: Expanded(
       child: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: AppDimensions.fontSizeXXSmall,
         ),
@@ -18,6 +20,6 @@ DataColumn titleTable(String title) {
 DataCell descriptionTable(String text) {
   return DataCell(Text(
     text,
-    style: TextStyle(fontSize: AppDimensions.fontSizeXXSmall),
+    style: const TextStyle(fontSize: AppDimensions.fontSizeXXSmall),
   ));
 }

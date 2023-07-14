@@ -1,22 +1,25 @@
+// ignore_for_file: file_names
+
 import 'package:boss/charts/BalanceChart.dart';
+import 'package:boss/charts/TableChart.dart';
 import 'package:boss/charts/HorizontalBarChart.dart';
 import 'package:boss/charts/LineChart.dart';
+import 'package:boss/charts/LineChartAlt.dart';
 import 'package:boss/charts/MonthVerticalBarChart.dart';
+import 'package:boss/charts/MultiPieChart.dart';
 import 'package:boss/charts/PieChart.dart';
+import 'package:boss/charts/ResumeBoxesChart.dart';
 import 'package:boss/charts/VerticalBarChart.dart';
+import 'package:boss/charts/VerticalBarChartSimple.dart';
 import 'package:flutter/material.dart';
 
 class ItemWidget {
-  String id;
-  String title;
-  String subtitle;
+  int id;
   Widget widget;
   bool state;
 
   ItemWidget({
     required this.id,
-    required this.title,
-    required this.subtitle,
     required this.widget,
     required this.state,
   });
@@ -25,47 +28,60 @@ class ItemWidget {
 class WidgetShowProvider with ChangeNotifier {
   List<ItemWidget> _listWidgets = <ItemWidget>[
     ItemWidget(
-      id: '1',
-      title: 'Saldo',
-      subtitle: 'Description del widget',
+      id: 1,
       widget: ExampleBalanceChart(),
       state: true,
     ),
     ItemWidget(
-      id: '2',
-      title: 'widget1',
-      subtitle: 'Description del widget',
-      widget: ExamplePieChart(),
+      id: 2,
+      widget: ResumeBoxesChart(),
       state: true,
     ),
     ItemWidget(
-      id: '2',
-      title: 'widget2',
-      subtitle: 'Description del widget',
-      widget: ExampleVerticalBarChart(),
+      id: 3,
+      widget: TableChart(),
       state: true,
     ),
     ItemWidget(
-      id: '2',
-      title: 'widget2',
-      subtitle: 'Description del widget',
+      id: 4,
+      widget: ExampleLineChart(),
+      state: true,
+    ),
+    /*ItemWidget(
+      id: 5,
+      widget: VerticalBarChartSimple(),
+      state: true,
+    ),
+    ItemWidget(
+      id: 6,
+      widget: ExampleHorizontalBarChart(),
+      state: true,
+    ),
+    ItemWidget(
+      id: 7,
+      widget: ExampleLineChartAlt(),
+      state: true,
+    ),
+    ItemWidget(
+      id: 8,
+      widget: ExampleMultiPieChart(),
+      state: true,
+    ),
+    ItemWidget(
+      id: 9,
       widget: ExampleMonthVerticalBarChart(),
       state: true,
     ),
     ItemWidget(
-      id: '2',
-      title: 'widget2',
-      subtitle: 'Description del widget',
-      widget: ExampleLineChart(),
+      id: 10,
+      widget: ExamplePieChart(),
       state: true,
     ),
     ItemWidget(
-      id: '2',
-      title: 'widget2',
-      subtitle: 'Description del widget',
-      widget: ExampleHorizontalBarChart(),
+      id: 11,
+      widget: ExampleVerticalBarChart(),
       state: true,
-    ),
+    ),*/
   ];
 
   List<ItemWidget> get listWidgets => _listWidgets;

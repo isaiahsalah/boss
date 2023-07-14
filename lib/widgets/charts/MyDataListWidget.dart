@@ -16,6 +16,7 @@ class MyDataListWidget extends StatelessWidget {
         : 600;
     double height = MediaQuery.of(context).size.height;
     return MyCardWidget(
+      header: false,
       title: "My Bar Chart",
       description: "My Bar Chart",
       footer: true,
