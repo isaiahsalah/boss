@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:boss/charts/HorizontalBarChart.dart';
 import 'package:boss/charts/PieChart.dart';
 import 'package:boss/providers/LanguageProvider.dart';
@@ -25,14 +27,14 @@ class StatSalesPage extends StatelessWidget {
                   color: watchTheme.colors.lightPrimary,
                 )),
             Text(watchLanguage.languageTexts!.pages.stats.pages!.sales.title,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: AppDimensions.fontSizeSmall,
                 )),
           ],
         ),
       ),
       body: ListView(
-        children: [
+        children: const [
           SizedBox(height: 20),
           ExamplePieChart(),
           ExampleHorizontalBarChart()

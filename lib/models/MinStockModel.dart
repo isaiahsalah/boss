@@ -2,6 +2,8 @@
 //
 //     final minStockModel = minStockModelFromJson(jsonString);
 
+// ignore_for_file: file_names
+
 import 'dart:convert';
 
 MinStockModel minStockModelFromJson(String str) =>

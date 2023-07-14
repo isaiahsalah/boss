@@ -2,15 +2,8 @@
 
 import 'package:boss/charts/BalanceChart.dart';
 import 'package:boss/charts/TableChart.dart';
-import 'package:boss/charts/HorizontalBarChart.dart';
 import 'package:boss/charts/LineChart.dart';
-import 'package:boss/charts/LineChartAlt.dart';
-import 'package:boss/charts/MonthVerticalBarChart.dart';
-import 'package:boss/charts/MultiPieChart.dart';
-import 'package:boss/charts/PieChart.dart';
 import 'package:boss/charts/ResumeBoxesChart.dart';
-import 'package:boss/charts/VerticalBarChart.dart';
-import 'package:boss/charts/VerticalBarChartSimple.dart';
 import 'package:flutter/material.dart';
 
 class ItemWidget {
@@ -29,22 +22,22 @@ class WidgetShowProvider with ChangeNotifier {
   List<ItemWidget> _listWidgets = <ItemWidget>[
     ItemWidget(
       id: 1,
-      widget: ExampleBalanceChart(),
+      widget: const ExampleBalanceChart(),
       state: true,
     ),
     ItemWidget(
       id: 2,
-      widget: ResumeBoxesChart(),
+      widget: const ResumeBoxesChart(),
       state: true,
     ),
     ItemWidget(
       id: 3,
-      widget: TableChart(),
+      widget: const TableChart(),
       state: true,
     ),
     ItemWidget(
       id: 4,
-      widget: ExampleLineChart(),
+      widget: const ExampleLineChart(),
       state: true,
     ),
     /*ItemWidget(

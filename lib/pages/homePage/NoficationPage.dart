@@ -1,7 +1,6 @@
 // ignore_for_file: file_names
 
 import 'package:boss/models/NotificationItemModel.dart';
-import 'package:boss/models/NotificationModel.dart';
 import 'package:boss/providers/NotificationItemProvider.dart';
 import 'package:boss/providers/NotificationProvider.dart';
 import 'package:boss/providers/ThemeProvider.dart';

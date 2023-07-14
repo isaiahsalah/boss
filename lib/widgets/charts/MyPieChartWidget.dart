@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:boss/models/ChartModel.dart';
 import 'package:boss/providers/ThemeProvider.dart';
 import 'package:boss/resources/AppDimensions.dart';
@@ -39,7 +41,6 @@ class _MyPieChartWidgetState extends State<MyPieChartWidget> {
   @override
   Widget build(BuildContext context) {
     ThemeProvider watchTheme = context.watch<ThemeProvider>();
-    ThemeProvider readTheme = context.read<ThemeProvider>();
     return MyCardWidget(
         header: false,
         title: widget.title,
@@ -50,12 +51,13 @@ class _MyPieChartWidgetState extends State<MyPieChartWidget> {
             Row(
               children: <Widget>[
                 Expanded(
-                  child: Container(
+                  child: SizedBox(
                     height: 300,
                     child: Stack(
                       children: [
                         PieChart(
-                          swapAnimationDuration: Duration(milliseconds: 100),
+                          swapAnimationDuration:
+                              const Duration(milliseconds: 100),
                           swapAnimationCurve: Curves.ease,
                           PieChartData(
                             pieTouchData: PieTouchData(
@@ -84,39 +86,37 @@ class _MyPieChartWidgetState extends State<MyPieChartWidget> {
                             ),
                           ),
                         ),
-                        Container(
-                          child: Center(
-                              child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Text(
-                                pieData
-                                    .map((item) => item.value)
-                                    .fold(
-                                        0,
-                                        (previousValue, value) =>
-                                            previousValue + value.toInt())
-                                    .toString(),
-                                style: TextStyle(
-                                  fontSize: AppDimensions.fontSizeXLong,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                        Center(
+                            child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              pieData
+                                  .map((item) => item.value)
+                                  .fold(
+                                      0,
+                                      (previousValue, value) =>
+                                          previousValue + value.toInt())
+                                  .toString(),
+                              style: const TextStyle(
+                                fontSize: AppDimensions.fontSizeXLong,
+                                fontWeight: FontWeight.bold,
                               ),
-                              SizedBox(
-                                width: 4,
+                            ),
+                            const SizedBox(
+                              width: 4,
+                            ),
+                            Text(
+                              "Bs.",
+                              style: TextStyle(
+                                fontSize: AppDimensions.fontSizeSmall,
+                                height: 3.5,
+                                color: watchTheme.colors.lightPrimary,
                               ),
-                              Text(
-                                "Bs.",
-                                style: TextStyle(
-                                  fontSize: AppDimensions.fontSizeSmall,
-                                  height: 3.5,
-                                  color: watchTheme.colors.lightPrimary,
-                                ),
-                              ),
-                            ],
-                          )),
-                        ),
+                            ),
+                          ],
+                        )),
                       ],
                     ),
                   ),
@@ -138,7 +138,7 @@ class _MyPieChartWidgetState extends State<MyPieChartWidget> {
                   });
                 }
               },
-              itemsMenu: {
+              itemsMenu: const {
                 1: Text('Categoria'),
                 2: Text('Producto'),
               },

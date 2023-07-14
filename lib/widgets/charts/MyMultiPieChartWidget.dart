@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:boss/models/ChartModel.dart';
 import 'package:boss/providers/ThemeProvider.dart';
 import 'package:boss/resources/AppDimensions.dart';
@@ -7,7 +9,6 @@ import 'package:collection/collection.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'dart:math' as math;
 
 class MyMultiPieChartWidget extends StatefulWidget {
   final String title;
@@ -39,7 +40,6 @@ class _MyMultiPieChartWidgetState extends State<MyMultiPieChartWidget> {
   @override
   Widget build(BuildContext context) {
     ThemeProvider watchTheme = context.watch<ThemeProvider>();
-    ThemeProvider readTheme = context.read<ThemeProvider>();
     return MyCardWidget(
         header: false,
         title: widget.title,
@@ -63,7 +63,7 @@ class _MyMultiPieChartWidgetState extends State<MyMultiPieChartWidget> {
                   });
                 }
               },
-              itemsMenu: {
+              itemsMenu: const {
                 1: Text('Categoria'),
                 2: Text('Producto'),
               },
@@ -84,13 +84,14 @@ class _MyMultiPieChartWidgetState extends State<MyMultiPieChartWidget> {
             .map(
               (item) => Row(
                 children: <Widget>[
-                  Container(
+                  SizedBox(
                     height: 140,
                     width: 140,
                     child: Stack(
                       children: [
                         PieChart(
-                          swapAnimationDuration: Duration(milliseconds: 100),
+                          swapAnimationDuration:
+                              const Duration(milliseconds: 100),
                           swapAnimationCurve: Curves.ease,
                           PieChartData(
                             pieTouchData: PieTouchData(
@@ -152,7 +153,7 @@ class _MyMultiPieChartWidgetState extends State<MyMultiPieChartWidget> {
                             children: [
                               Text(
                                 item.value.toInt().toString(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: AppDimensions.fontSizeLong * 1.2,
                                   fontWeight: FontWeight.bold,
                                 ),

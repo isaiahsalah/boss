@@ -1,8 +1,8 @@
+// ignore_for_file: file_names
+
 import 'package:boss/providers/ThemeProvider.dart';
 import 'package:boss/resources/AppDimensions.dart';
-import 'package:boss/widgets/components/MyPopUpInfoWidget.dart';
 import 'package:boss/widgets/main/MyCardWidget.dart';
-import 'package:boss/widgets/components/MyTitleWidgetWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -22,7 +22,6 @@ class MyBalanceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeProvider watchTheme = context.watch<ThemeProvider>();
-    ThemeProvider readTheme = context.read<ThemeProvider>();
     return MyCardWidget(
       header: true,
       title: title,
@@ -36,11 +35,11 @@ class MyBalanceWidget extends StatelessWidget {
             children: <Widget>[
               Text(
                 (entryMoney + exitMoney).toString(),
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 40, fontWeight: FontWeight.bold, height: 0),
               ),
-              SizedBox(width: 4),
-              Text(
+              const SizedBox(width: 4),
+              const Text(
                 "Bs.",
                 style: TextStyle(
                   height: 3.9,
@@ -49,7 +48,7 @@ class MyBalanceWidget extends StatelessWidget {
             ],
           ),
           Card(
-            color: Color(0xff627B8E),
+            color: const Color(0xff627B8E),
             surfaceTintColor: Colors.transparent,
             child: Padding(
               padding: const EdgeInsets.all(AppDimensions.spacingSmall),
@@ -57,7 +56,7 @@ class MyBalanceWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Ingresos("Ingresos", entryMoney, true),
+                  transaction("Ingresos", entryMoney, true),
                   SizedBox(
                     height: 60,
                     child: VerticalDivider(
@@ -65,7 +64,7 @@ class MyBalanceWidget extends StatelessWidget {
                       color: watchTheme.colors.primary,
                     ),
                   ),
-                  Ingresos("Egresos", exitMoney, false),
+                  transaction("Egresos", exitMoney, false),
                 ],
               ),
             ),
@@ -76,7 +75,7 @@ class MyBalanceWidget extends StatelessWidget {
   }
 }
 
-Widget Ingresos(String title, int money, bool entry) {
+Widget transaction(String title, int money, bool entry) {
   return Expanded(
     child: Column(
       mainAxisSize: MainAxisSize.max,
@@ -87,21 +86,21 @@ Widget Ingresos(String title, int money, bool entry) {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             entry
-                ? Icon(
+                ? const Icon(
                     Icons.arrow_upward_rounded,
                     color: Color(0xff9EDBA2),
                   )
-                : Icon(
+                : const Icon(
                     Icons.arrow_downward_rounded,
                     color: Color(0xffEF927F),
                   ),
             Text(
               title,
-              style: TextStyle(height: 2.3, color: Color(0xffA7B5BF)),
+              style: const TextStyle(height: 2.3, color: Color(0xffA7B5BF)),
             ),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 2,
         ),
         Row(
@@ -110,13 +109,13 @@ Widget Ingresos(String title, int money, bool entry) {
           children: <Widget>[
             Text(
               money.toString(),
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 25,
                 height: 0,
               ),
             ),
-            SizedBox(width: 2),
-            Text(
+            const SizedBox(width: 2),
+            const Text(
               "Bs.",
               style: TextStyle(
                 fontSize: 12,

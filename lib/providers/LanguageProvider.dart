@@ -1,10 +1,12 @@
+// ignore_for_file: file_names
+
 import 'dart:convert';
 import 'package:boss/models/LanguageModel.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
 
 class LanguageProvider with ChangeNotifier {
-  List<String> _listLanguage = <String>['es', 'en', 'fr'];
+  final List<String> _listLanguage = <String>['es', 'en', 'fr'];
   String _dropdownValue = "es";
   LanguageModel? _languageTexts;
 
@@ -15,7 +17,6 @@ class LanguageProvider with ChangeNotifier {
   void languageChange({required String lang}) async {
     _dropdownValue = lang;
     _languageTexts = await cargarArchivoJson(lang: lang);
-    print(cargarArchivoJson(lang: lang));
     notifyListeners();
   }
 

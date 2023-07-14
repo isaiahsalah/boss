@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:boss/providers/ThemeProvider.dart';
 import 'package:boss/widgets/components/MyPopUpInfoWidget.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +15,6 @@ class MyTitleWidgetWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeProvider watchTheme = context.watch<ThemeProvider>();
-    ThemeProvider readTheme = context.read<ThemeProvider>();
 
     return Column(
       children: [
@@ -24,7 +25,7 @@ class MyTitleWidgetWidget extends StatelessWidget {
               title,
               style: TextStyle(color: watchTheme.colors.lightPrimary),
             ),
-            PopUpInfoWidget(
+            const PopUpInfoWidget(
               iconPopUp: Icons.info,
               title: "Saldo Total",
               description: "Saldo Total",

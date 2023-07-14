@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:boss/providers/LanguageProvider.dart';
 import 'package:boss/providers/ThemeProvider.dart';
 import 'package:boss/resources/AppData.dart';
@@ -30,7 +32,7 @@ class AboutPage extends StatelessWidget {
                   color: watchTheme.colors.lightPrimary,
                 )),
             Text(watchLanguage.languageTexts!.pages.settings.pages.about.title,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: AppDimensions.fontSizeSmall,
                 )),
           ],
@@ -41,9 +43,13 @@ class AboutPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            MyLogoWidget(size: 60),
-            MyLogoTextWidget(size: 20),
+            const MyLogoWidget(size: 60),
+            const MyLogoTextWidget(size: 20),
             Container(
+              decoration: BoxDecoration(
+                  color: watchTheme.colors.primary,
+                  borderRadius:
+                      BorderRadius.circular(AppDimensions.spacingSmall)),
               child: Column(
                 children: watchLanguage
                     .languageTexts!.pages.settings.pages.about.options
@@ -55,10 +61,6 @@ class AboutPage extends StatelessWidget {
                         ))
                     .toList(),
               ),
-              decoration: BoxDecoration(
-                  color: watchTheme.colors.primary,
-                  borderRadius:
-                      BorderRadius.circular(AppDimensions.spacingSmall)),
             ),
           ],
         ),

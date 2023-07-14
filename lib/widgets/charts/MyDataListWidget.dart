@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:boss/providers/ThemeProvider.dart';
 import 'package:boss/resources/AppDimensions.dart';
 import 'package:boss/widgets/main/MyCardWidget.dart';
@@ -11,10 +13,6 @@ class MyDataListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeProvider watchTheme = context.watch<ThemeProvider>();
 
-    double width = MediaQuery.of(context).size.width < 600
-        ? MediaQuery.of(context).size.width
-        : 600;
-    double height = MediaQuery.of(context).size.height;
     return MyCardWidget(
       header: false,
       title: "My Bar Chart",
@@ -23,20 +21,20 @@ class MyDataListWidget extends StatelessWidget {
       widgetContend: Column(
         children: [
           myListTile(watchTheme: watchTheme),
-          Divider(),
+          const Divider(),
           myListTile(watchTheme: watchTheme),
-          Divider(),
+          const Divider(),
           myListTile(watchTheme: watchTheme),
         ],
       ),
     );
   }
-
-  double RowSize(double quantity, double maxQuantity, double width) {
+/*
+  double rowSize(double quantity, double maxQuantity, double width) {
     final double newQuantity =
         (width - (AppDimensions.spacingMedium * 4)) / (maxQuantity / quantity);
     return newQuantity;
-  }
+  }*/
 
   Widget myListTile({required ThemeProvider watchTheme}) {
     return Padding(

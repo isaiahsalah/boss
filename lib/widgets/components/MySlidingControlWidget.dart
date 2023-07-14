@@ -1,8 +1,8 @@
-import 'package:boss/providers/ThemeProvider.dart';
+// ignore_for_file: file_names
+
 import 'package:boss/resources/AppDimensions.dart';
 import 'package:custom_sliding_segmented_control/custom_sliding_segmented_control.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class MySlidingControlWidget extends StatelessWidget {
   final int initialValue;
@@ -22,12 +22,10 @@ class MySlidingControlWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ThemeProvider watchTheme = context.watch<ThemeProvider>();
-    ThemeProvider readTheme = context.read<ThemeProvider>();
     return CustomSlidingSegmentedControl<int>(
       fromMax: true,
       isStretch: true,
-      innerPadding: EdgeInsets.all(5.0),
+      innerPadding: const EdgeInsets.all(5.0),
       initialValue: initialValue,
       children: itemsMenu,
       decoration: BoxDecoration(
@@ -38,7 +36,7 @@ class MySlidingControlWidget extends StatelessWidget {
             color: Colors.black.withOpacity(.2),
             blurRadius: 2.0,
             spreadRadius: 1.0,
-            offset: Offset(
+            offset: const Offset(
               0.0,
               2.0,
             ),
@@ -53,14 +51,14 @@ class MySlidingControlWidget extends StatelessWidget {
             color: Colors.black.withOpacity(.1),
             blurRadius: 4.0,
             spreadRadius: 1.0,
-            offset: Offset(
+            offset: const Offset(
               0.0,
               2.0,
             ),
           ),
         ],
       ),
-      duration: Duration(milliseconds: 200),
+      duration: const Duration(milliseconds: 200),
       curve: Curves.ease,
       onValueChanged: (i) {
         onValueChanged(i);

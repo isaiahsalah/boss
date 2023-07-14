@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:boss/models/ChartModel.dart';
 import 'package:boss/widgets/charts/MyVerticalBarChartWidget.dart';
 import 'package:flutter/material.dart';

@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:boss/models/ChartModel.dart';
 import 'package:boss/providers/ThemeProvider.dart';
 import 'package:boss/resources/AppDimensions.dart';
@@ -6,7 +8,6 @@ import 'package:collection/collection.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:intl/intl.dart';
 
 class VerticalBarChartWidgetSimple extends StatefulWidget {
   final String title;
@@ -110,7 +111,7 @@ class VerticalBarChartWidgetSimpletate
                     watchTheme: watchTheme,
                     barList: widget.barList,
                   ),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   typeChartName(
                     color: watchTheme.colors.lightPrimary,
                     title: widget.barListTitle,
@@ -147,7 +148,7 @@ class VerticalBarChartWidgetSimpletate
               color: color,
             ),
           ),
-          SizedBox(width: 5),
+          const SizedBox(width: 5),
           Text(
             title,
             style: TextStyle(
@@ -277,16 +278,16 @@ class VerticalBarChartWidgetSimpletate
         sideTitles: SideTitles(
           showTitles: true,
           reservedSize: 45,
-          getTitlesWidget: (double, TitleMeta) =>
-              getTitles(double, TitleMeta, watchTheme),
+          getTitlesWidget: (double double, TitleMeta titleMeta) =>
+              getTitles(double, titleMeta, watchTheme),
         ),
       ),
       leftTitles: AxisTitles(
         sideTitles: SideTitles(
           showTitles: false,
           reservedSize: 45,
-          getTitlesWidget: (double, TitleMeta) =>
-              getTitlesY(double, TitleMeta, watchTheme),
+          getTitlesWidget: (double double, TitleMeta titleMeta) =>
+              getTitlesY(double, titleMeta, watchTheme),
         ),
       ),
       topTitles: const AxisTitles(

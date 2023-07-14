@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:boss/charts/BalanceChart.dart';
 import 'package:boss/charts/LineChart.dart';
 import 'package:boss/charts/MonthVerticalBarChart.dart';
@@ -30,14 +32,14 @@ class StatHumanResourcePage extends StatelessWidget {
             Text(
                 watchLanguage
                     .languageTexts!.pages.stats.pages!.humanResources.title,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: AppDimensions.fontSizeSmall,
                 )),
           ],
         ),
       ),
       body: ListView(
-        children: [
+        children: const [
           SizedBox(height: 20),
           ExampleBalanceChart(),
           ExampleMonthVerticalBarChart(),

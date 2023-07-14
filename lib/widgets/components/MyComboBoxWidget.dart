@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:boss/providers/ThemeProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +19,6 @@ class MyComboBoxWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeProvider watchTheme = context.watch<ThemeProvider>();
-    ThemeProvider readTheme = context.read<ThemeProvider>();
     return DropdownButton<String>(
       value: dropdownValue,
       icon: const Icon(Icons.arrow_drop_down_rounded),

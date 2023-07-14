@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:boss/providers/LanguageProvider.dart';
 import 'package:boss/providers/NotificationProvider.dart';
 import 'package:boss/providers/ThemeProvider.dart';
@@ -52,7 +54,7 @@ class _NotificationPageState extends State<NotificationPage> {
               Text(
                   watchLanguage
                       .languageTexts!.pages.settings.pages.notification.title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: AppDimensions.fontSizeSmall,
                   )),
             ],
@@ -98,7 +100,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                 },
                               ),
                             ),
-                            Divider(
+                            const Divider(
                               height: 0,
                             ),
                           ],

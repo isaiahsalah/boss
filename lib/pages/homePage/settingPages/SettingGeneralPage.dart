@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:boss/providers/LanguageProvider.dart';
 import 'package:boss/providers/ThemeProvider.dart';
 import 'package:boss/resources/AppDimensions.dart';
@@ -97,7 +99,7 @@ class _GeneralPageState extends State<GeneralPage> {
                 )),
             Text(
                 watchLanguage.languageTexts!.pages.settings.pages.general.title,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: AppDimensions.fontSizeSmall,
                 )),
           ],
@@ -106,6 +108,9 @@ class _GeneralPageState extends State<GeneralPage> {
       body: Padding(
         padding: const EdgeInsets.all(AppDimensions.spacingMedium),
         child: Container(
+          decoration: BoxDecoration(
+              color: watchTheme.colors.primary,
+              borderRadius: BorderRadius.circular(AppDimensions.spacingSmall)),
           child: Padding(
             padding: const EdgeInsets.all(AppDimensions.spacingMedium),
             child: Column(
@@ -121,9 +126,6 @@ class _GeneralPageState extends State<GeneralPage> {
                   .toList(),
             ),
           ),
-          decoration: BoxDecoration(
-              color: watchTheme.colors.primary,
-              borderRadius: BorderRadius.circular(AppDimensions.spacingSmall)),
         ),
       ),
     );

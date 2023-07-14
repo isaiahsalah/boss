@@ -1,6 +1,4 @@
-import 'dart:ffi';
-
-import 'package:flutter/material.dart';
+// ignore_for_file: file_names
 
 class AppDimensions {
   static const double spacingSmall = 8.0;

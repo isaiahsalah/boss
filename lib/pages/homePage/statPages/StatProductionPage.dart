@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:boss/charts/MultiPieChart.dart';
 import 'package:boss/charts/PieChart.dart';
 import 'package:boss/charts/ResumeBoxesChart.dart';
@@ -30,14 +32,14 @@ class StatProductionPage extends StatelessWidget {
             Text(
                 watchLanguage
                     .languageTexts!.pages.stats.pages!.production.title,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: AppDimensions.fontSizeSmall,
                 )),
           ],
         ),
       ),
       body: ListView(
-        children: [
+        children: const [
           SizedBox(height: 20),
           ResumeBoxesChart(),
           ExamplePieChart(),

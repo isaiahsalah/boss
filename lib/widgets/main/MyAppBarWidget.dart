@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:boss/providers/FilterDateProvider.dart';
 import 'package:boss/providers/ThemeProvider.dart';
 import 'package:boss/resources/AppDimensions.dart';
@@ -19,15 +21,14 @@ class MyAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   }) : super(key: key);
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
     ThemeProvider watchTheme = context.watch<ThemeProvider>();
-    ThemeProvider readTheme = context.read<ThemeProvider>();
     DateTimeProvider watch = context.watch<DateTimeProvider>();
 
-    void onPressedFilter() => {Navigator.pushNamed(context, '/filter')};
+    void onPressedFilter() => Navigator.pushNamed(context, '/filter');
 
     return AppBar(
       elevation: 3,
@@ -53,7 +54,7 @@ class MyAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
                 color: watchTheme.colors.lightPrimary,
               )),
           Text(title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: AppDimensions.fontSizeXSmall,
               )),
         ],
@@ -81,17 +82,17 @@ class MyAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: AppDimensions.spacingSmall,
                   ),
                   IconButton(
-                    icon: Icon(Icons.filter_alt),
+                    icon: const Icon(Icons.filter_alt),
                     onPressed: onPressedFilter,
                   ),
                 ],
               )
-            : SizedBox(),
-        SizedBox(
+            : const SizedBox(),
+        const SizedBox(
           width: AppDimensions.spacingSmall,
         )
       ],

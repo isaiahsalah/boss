@@ -1,48 +1,49 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
-import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppData {
   static List<dynamic> myListMenuSetting = [
     {
-      "leading": Icon(Icons.settings_applications_sharp),
+      "leading": const Icon(Icons.settings_applications_sharp),
       "onPressed": (context) {
         Navigator.pushNamed(context, '/config/general');
       }
     },
     {
-      "leading": Icon(Icons.data_thresholding_rounded),
+      "leading": const Icon(Icons.data_thresholding_rounded),
       "onPressed": (context) {
         Navigator.pushNamed(context, '/config/widgets');
       }
     },
     {
-      "leading": Icon(Icons.edit_notifications_rounded),
+      "leading": const Icon(Icons.edit_notifications_rounded),
       "onPressed": (context) {
         Navigator.pushNamed(context, '/config/notifications');
       }
     },
     {
-      "leading": Icon(Icons.account_box_rounded),
+      "leading": const Icon(Icons.account_box_rounded),
       "onPressed": (context) {
         Navigator.pushNamed(context, '/config/profile');
       }
     },
     {
-      "leading": Icon(Icons.help_rounded),
+      "leading": const Icon(Icons.help_rounded),
       "onPressed": (context) {
         Navigator.pushNamed(context, '/config/help');
       },
     },
     {
-      "leading": Icon(Icons.logo_dev_outlined),
+      "leading": const Icon(Icons.logo_dev_outlined),
       "onPressed": (context) {
         Navigator.pushNamed(context, '/config/about');
       },
     },
     {
-      "leading": Icon(Icons.login_rounded),
+      "leading": const Icon(Icons.login_rounded),
       "onPressed": (context) async {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.remove('username');

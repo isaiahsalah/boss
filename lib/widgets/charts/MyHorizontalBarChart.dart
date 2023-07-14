@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:boss/models/ChartModel.dart';
 import 'package:boss/providers/ThemeProvider.dart';
 import 'package:boss/resources/AppResources.dart';
@@ -34,7 +36,6 @@ class _MyHorizontalBarChartWidgetState
     double width = MediaQuery.of(context).size.width < 600
         ? MediaQuery.of(context).size.width
         : 600;
-    double height = MediaQuery.of(context).size.height;
     return MyCardWidget(
         header: false,
         title: widget.title,
@@ -49,13 +50,13 @@ class _MyHorizontalBarChartWidgetState
     return listita
         .map((item) => MyLineBarChartWidget(
               title: item.title,
-              quantity: RowSize(item.value, mayorNumber(), width),
+              quantity: rowSize(item.value, mayorNumber(), width),
             ))
         .take(3)
         .toList();
   }
 
-  double RowSize(double quantity, double maxQuantity, double width) {
+  double rowSize(double quantity, double maxQuantity, double width) {
     final double newQuantity =
         (width - (AppDimensions.spacingMedium * 4)) / (maxQuantity / quantity);
     return newQuantity;
@@ -92,70 +93,67 @@ class MyLineBarChartWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeProvider watchTheme = context.watch<ThemeProvider>();
-    ThemeProvider readTheme = context.read<ThemeProvider>();
-    return Container(
-      child: Padding(
-        padding: EdgeInsets.only(bottom: AppDimensions.spacingSmall),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              constraints: BoxConstraints(minWidth: 50),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: AppDimensions.fontSizeXSmall,
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        quantity.toStringAsFixed(0),
-                        style: TextStyle(
-                          fontSize: AppDimensions.fontSizeXSmall,
-                        ),
-                      ),
-                      Text(
-                        'Bs',
-                        style: TextStyle(
-                            fontSize: AppDimensions.fontSizeXSmall,
-                            color: watchTheme.colors.lightPrimary),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Row(
+    return Padding(
+      padding: const EdgeInsets.only(bottom: AppDimensions.spacingSmall),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            constraints: const BoxConstraints(minWidth: 50),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: watchTheme.colors.lightBackground,
-                      borderRadius:
-                          BorderRadius.circular(AppDimensions.radiusSmall),
-                    ),
-                    child: Row(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                              color: watchTheme.colors.lightPrimary,
-                              borderRadius: BorderRadius.circular(
-                                  AppDimensions.radiusSmall)),
-                          height: 8,
-                          width: quantity,
-                        ),
-                      ],
-                    ),
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: AppDimensions.fontSizeXSmall,
                   ),
+                ),
+                Row(
+                  children: [
+                    Text(
+                      quantity.toStringAsFixed(0),
+                      style: const TextStyle(
+                        fontSize: AppDimensions.fontSizeXSmall,
+                      ),
+                    ),
+                    Text(
+                      'Bs',
+                      style: TextStyle(
+                          fontSize: AppDimensions.fontSizeXSmall,
+                          color: watchTheme.colors.lightPrimary),
+                    )
+                  ],
                 ),
               ],
             ),
-          ],
-        ),
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: watchTheme.colors.lightBackground,
+                    borderRadius:
+                        BorderRadius.circular(AppDimensions.radiusSmall),
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                            color: watchTheme.colors.lightPrimary,
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.radiusSmall)),
+                        height: 8,
+                        width: quantity,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

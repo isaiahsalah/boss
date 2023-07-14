@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:boss/pages/homePage/BoardPage.dart';
 import 'package:boss/pages/homePage/NoficationPage.dart';
 import 'package:boss/pages/homePage/SettingPage.dart';
@@ -15,33 +17,33 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
-  List<Widget> _screens = [
-    BoardPage(),
-    StatsPage(),
-    NotificationPage(),
-    SettingPage(),
+  final List<Widget> _screens = [
+    const BoardPage(),
+    const StatsPage(),
+    const NotificationPage(),
+    const SettingPage(),
   ];
 
-  List<IconData> _icons = [
+  final List<IconData> _icons = [
     Icons.account_balance_wallet_rounded,
     Icons.table_chart_rounded,
     Icons.notifications_active,
     Icons.person_sharp,
   ];
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
     LanguageProvider watchLanguage = context.watch<LanguageProvider>();
 
-    List<String> _titles = [
+    List<String> titles = [
       watchLanguage.languageTexts!.pages.board.title,
       watchLanguage.languageTexts!.pages.stats.title,
       watchLanguage.languageTexts!.pages.notifications.title,
       watchLanguage.languageTexts!.pages.settings.title,
     ];
 
-    List<String> _subTitles = [
+    List<String> subTitles = [
       watchLanguage.languageTexts!.pages.board.subTitle,
       watchLanguage.languageTexts!.pages.stats.subTitle,
       watchLanguage.languageTexts!.pages.notifications.subTitle,
@@ -50,8 +52,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: MyAppBarWidget(
         leading: Icon(_icons[_currentIndex]),
-        title: _titles[_currentIndex],
-        subTitle: _subTitles[_currentIndex],
+        title: titles[_currentIndex],
+        subTitle: subTitles[_currentIndex],
         filter: true,
       ),
       bottomNavigationBar: Container(
@@ -70,16 +72,16 @@ class _HomePageState extends State<HomePage> {
             setState(() {
               _currentIndex = index;
               _pageController.animateToPage(index,
-                  duration: Duration(milliseconds: 200),
+                  duration: const Duration(milliseconds: 200),
                   curve: Curves.easeInOut);
             });
           },
           showSelectedLabels: false,
           showUnselectedLabels: false,
           type: BottomNavigationBarType.fixed,
-          backgroundColor: Color(0xFF3B5A72),
+          backgroundColor: const Color(0xFF3B5A72),
           selectedItemColor: Colors.white,
-          unselectedItemColor: Color(0xFFA7B5BF),
+          unselectedItemColor: const Color(0xFFA7B5BF),
           items: [
             BottomNavigationBarItem(
               label: 'Panel',

@@ -1,4 +1,4 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, use_build_context_synchronously
 
 import 'package:boss/models/UserModel.dart';
 import 'package:boss/providers/LanguageProvider.dart';
@@ -26,17 +26,6 @@ class _LoginPageState extends State<LoginPage> {
   //late SharedPreferences prefs;
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   late Future<String> _userName;
-
-  Future<void> _incrementCounter() async {
-    final SharedPreferences prefs = await _prefs;
-    final String userName = (prefs.getString('username') ?? "");
-
-    setState(() {
-      _userName = prefs.setString('username', userName).then((bool success) {
-        return userName;
-      });
-    });
-  }
 
   @override
   void initState() {
@@ -72,7 +61,6 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     ThemeProvider watchTheme = context.watch<ThemeProvider>();
     LanguageProvider watchLanguage = context.watch<LanguageProvider>();
-    UserProvider watchUser = context.watch<UserProvider>();
     UserProvider readUser = context.read<UserProvider>();
 
     double screenHeight = MediaQuery.of(context).size.height;
@@ -84,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
           textPassController.text == "boss") {
         prefs.setString('username', 'ejemplo@gmail.com');
         prefs.setString('token', 'token_de_acceso');
-        readUser.UserChange(
+        readUser.userChange(
             user: UserModel(
           name: "name",
           lastName: "lastName",

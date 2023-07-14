@@ -1,9 +1,9 @@
-import 'package:boss/models/ExampleModel.dart';
+// ignore_for_file: file_names
+
 import 'package:boss/models/MinStockModel.dart';
 import 'package:boss/resources/AppDimensions.dart';
 import 'package:boss/widgets/charts/MyDataTableWidget.dart';
 import 'package:boss/widgets/main/MyCardWidget.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class TableWidget extends StatefulWidget {
@@ -56,8 +56,8 @@ class _TableWidgetState extends State<TableWidget> {
       widgetContend: SingleChildScrollView(
         child: Center(
           child: DataTable(
-            headingTextStyle: TextStyle(fontSize: 12),
-            dataTextStyle: TextStyle(fontSize: 5),
+            headingTextStyle: const TextStyle(fontSize: 12),
+            dataTextStyle: const TextStyle(fontSize: 5),
             columnSpacing: AppDimensions.spacingLong,
             dataRowMinHeight: 1,
             dividerThickness: 0,
@@ -69,19 +69,18 @@ class _TableWidgetState extends State<TableWidget> {
               titleTable("Mínimo"),
             ],
             rows: widget.minStockData.branch[0].items
-                    .take(5)
-                    .map(
-                      (data) => DataRow(
-                        cells: <DataCell>[
-                          descriptionTable(data.id),
-                          descriptionTable(data.name),
-                          descriptionTable(data.stock.toString()),
-                          descriptionTable(data.minStock.toString()),
-                        ],
-                      ),
-                    )
-                    .toList() ??
-                [],
+                .take(5)
+                .map(
+                  (data) => DataRow(
+                    cells: <DataCell>[
+                      descriptionTable(data.id),
+                      descriptionTable(data.name),
+                      descriptionTable(data.stock.toString()),
+                      descriptionTable(data.minStock.toString()),
+                    ],
+                  ),
+                )
+                .toList(),
           ),
         ),
       ),

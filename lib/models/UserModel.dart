@@ -2,6 +2,8 @@
 //
 //     final userModel = userModelFromJson(jsonString);
 
+// ignore_for_file: file_names
+
 import 'dart:convert';
 
 UserModel userModelFromJson(String str) => UserModel.fromJson(json.decode(str));

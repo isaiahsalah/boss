@@ -22,7 +22,7 @@ class _BoardPageState extends State<BoardPage> {
   Widget build(BuildContext context) {
     WidgetShowProvider watchWidgetShow = context.watch<WidgetShowProvider>();
     List<Widget> widgetList = [
-      SizedBox(
+      const SizedBox(
         height: 20,
       )
     ];

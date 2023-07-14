@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:boss/providers/ThemeProvider.dart';
 import 'package:boss/resources/AppDimensions.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +24,6 @@ class MyListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeProvider watchTheme = context.watch<ThemeProvider>();
-    ThemeProvider readTheme = context.read<ThemeProvider>();
     return Material(
       elevation: 4.0,
       shadowColor: Colors.black,
@@ -30,7 +31,8 @@ class MyListTile extends StatelessWidget {
       child: ListTile(
         onTap: onPressed,
         tileColor: watchTheme.colors.primary,
-        leading: leading == null ? null : leading,
+        leading: leading,
+        // ignore: unnecessary_null_comparison
         trailing: onPressed == null ? null : trailing,
         title: Text(title),
         subtitle: Text(

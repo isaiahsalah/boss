@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:boss/providers/ThemeProvider.dart';
 import 'package:boss/resources/AppDimensions.dart';
 import 'package:flutter/material.dart';
@@ -25,35 +27,35 @@ class PopUpInfoWidget extends StatelessWidget {
       color: watchTheme.colors.lightPrimary,
       style: IconButton.styleFrom(
         iconSize: AppDimensions.fontSizeMedium,
-        padding: EdgeInsets.all(5),
-        minimumSize: Size(10, 10),
+        padding: const EdgeInsets.all(5),
+        minimumSize: const Size(10, 10),
       ),
       onPressed: () => showDialog<String>(
         context: context,
         builder: (BuildContext context) => AlertDialog(
-          titlePadding: EdgeInsets.only(
+          titlePadding: const EdgeInsets.only(
             right: AppDimensions.spacingMedium,
             left: AppDimensions.spacingMedium,
             top: AppDimensions.spacingMedium,
             bottom: AppDimensions.spacingSmall,
           ),
-          contentPadding: EdgeInsets.only(
+          contentPadding: const EdgeInsets.only(
             right: AppDimensions.spacingMedium,
             left: AppDimensions.spacingMedium,
             bottom: AppDimensions.spacingMedium,
           ),
-          actionsPadding: EdgeInsets.all(AppDimensions.spacingSmall),
+          actionsPadding: const EdgeInsets.all(AppDimensions.spacingSmall),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(
                 AppDimensions.radiusSmall), // Modifica el radio de borde aquí
           ),
           backgroundColor: watchTheme.colors.primary,
           surfaceTintColor: Colors.transparent,
-          contentTextStyle: TextStyle(),
-          titleTextStyle: TextStyle(),
+          contentTextStyle: const TextStyle(),
+          titleTextStyle: const TextStyle(),
           title: Text(
             title,
-            style: TextStyle(fontSize: AppDimensions.fontSizeSmall),
+            style: const TextStyle(fontSize: AppDimensions.fontSizeSmall),
           ),
           content: Text(
             description,

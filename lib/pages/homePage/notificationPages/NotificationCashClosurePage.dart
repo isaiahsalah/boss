@@ -1,4 +1,5 @@
-import 'package:boss/providers/LanguageProvider.dart';
+// ignore_for_file: file_names
+
 import 'package:boss/providers/ThemeProvider.dart';
 import 'package:boss/resources/AppDimensions.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,6 @@ class NotificationCashClosurePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    LanguageProvider watchLanguage = context.watch<LanguageProvider>();
     ThemeProvider watchTheme = context.watch<ThemeProvider>();
 
     return Scaffold(
@@ -22,7 +22,7 @@ class NotificationCashClosurePage extends StatelessWidget {
                   fontSize: AppDimensions.fontSizeXXSmall,
                   color: watchTheme.colors.lightPrimary,
                 )),
-            Text("Item",
+            const Text("Item",
                 style: TextStyle(
                   fontSize: AppDimensions.fontSizeSmall,
                 )),

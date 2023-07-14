@@ -1,5 +1,6 @@
+// ignore_for_file: file_names
+
 import 'package:boss/models/NotificationModel.dart';
-import 'package:boss/pages/homePage/notificationPages/NotificationCashClosurePage.dart';
 import 'package:flutter/material.dart';
 
 class NotificationProvider with ChangeNotifier {

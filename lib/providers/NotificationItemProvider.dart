@@ -1,5 +1,6 @@
+// ignore_for_file: file_names
+
 import 'package:boss/models/NotificationItemModel.dart';
-import 'package:boss/models/NotificationModel.dart';
 import 'package:flutter/material.dart';
 
 class NotificationItemProvider with ChangeNotifier {

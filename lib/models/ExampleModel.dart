@@ -2,6 +2,8 @@
 //
 //     final exampleModel = exampleModelFromJson(jsonString);
 
+// ignore_for_file: file_names
+
 import 'dart:convert';
 
 ExampleModel exampleModelFromJson(String str) =>
@@ -118,6 +120,7 @@ class Result {
       };
 }
 
+// ignore: constant_identifier_names
 enum Gender { MALE, FEMALE, UNKNOWN }
 
 final genderValues = EnumValues(
@@ -143,11 +146,13 @@ class Location {
       };
 }
 
+// ignore: constant_identifier_names
 enum Species { HUMAN, ALIEN }
 
 final speciesValues =
     EnumValues({"Alien": Species.ALIEN, "Human": Species.HUMAN});
 
+// ignore: constant_identifier_names
 enum Status { ALIVE, UNKNOWN, DEAD }
 
 final statusValues = EnumValues(

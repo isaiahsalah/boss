@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:boss/providers/LanguageProvider.dart';
 import 'package:boss/resources/AppResources.dart';
 import 'package:boss/widgets/main/MyListTile.dart';
@@ -23,7 +25,7 @@ class StatsPage extends StatelessWidget {
                     title: item.title,
                     subTitle: item.subTitle,
                     leading: AppData.myListMenuStats[i]["leading"],
-                    trailing: Icon(Icons.arrow_forward_ios_rounded),
+                    trailing: const Icon(Icons.arrow_forward_ios_rounded),
                     onPressed: () {
                       Navigator.pushNamed(
                         context,
@@ -31,7 +33,7 @@ class StatsPage extends StatelessWidget {
                       );
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   )
                 ],
