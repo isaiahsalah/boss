@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "89562297810",
+    "project_id": "singleton-boss",
+    "storage_bucket": "singleton-boss.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:89562297810:android:d595c2340958ee7519040b",
+        "android_client_info": {
+          "package_name": "com.singleton.boss"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "89562297810-tihbdujmphug212bdad4ocsrpr74k0lg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.singleton.boss",
+            "certificate_hash": "06898d719d1a523ed55e39f9f21a60c2332f61a5"
+          }
+        },
+        {
+          "client_id": "89562297810-tbfeibnt9dli8muu4vlv21kgtuooau2k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-7JrFRL-g0XE3P0CGgpN0Dkm17nGX2OM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "89562297810-tbfeibnt9dli8muu4vlv21kgtuooau2k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

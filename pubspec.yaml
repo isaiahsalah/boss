@@ -42,9 +42,15 @@ dependencies:
   provider: ^6.0.5
   carousel_slider: ^4.2.1
   collection: ^1.17.1
-  intl: ^0.18.1
   flutter_echarts: #latest version
   shared_preferences: ^2.2.0
+  firebase_messaging: ^14.6.5
+  firebase_core: ^2.15.0
+  animate_do: ^3.0.2
+  skeletons: ^0.0.3
+  flutter_localizations:
+    sdk: flutter
+  intl: any
 
 dev_dependencies:
   flutter_test:
@@ -74,9 +80,11 @@ flutter:
     - assets/images/report.png
     - assets/images/seo.png
     - assets/images/logo.png
+    - assets/images/logo-text.png
     - assets/languages/es.json
     - assets/languages/en.json
     - assets/languages/fr.json
+    - assets/images/hat.png
 
   #   - images/a_dot_ham.jpeg
 

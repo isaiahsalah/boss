@@ -1,0 +1,50 @@
+// ignore_for_file: file_names
+
+import 'package:boss/providers/theme_provider.dart';
+import 'package:boss/resources/dimensions_resource.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+class MyListTile extends StatelessWidget {
+  final String title;
+  final String subTitle;
+  final Widget leading;
+  final Widget trailing;
+  final Function() onPressed;
+
+  const MyListTile({
+    Key? key,
+    required this.title,
+    required this.subTitle,
+    required this.leading,
+    required this.trailing,
+    required this.onPressed,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    ThemeProvider watchTheme = context.watch<ThemeProvider>();
+    return Material(
+      elevation: 4.0,
+      shadowColor: Colors.black,
+      borderRadius: BorderRadius.circular(AppDimensions.radiusSmall),
+      child: ListTile(
+        onTap: onPressed,
+        tileColor: watchTheme.colors.background,
+        leading: leading,
+        // ignore: unnecessary_null_comparison
+        trailing: onPressed == null ? null : trailing,
+        title: Text(title),
+        subtitle: Text(
+          subTitle,
+          style: TextStyle(
+            color: watchTheme.colors.lightPrimary,
+          ),
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppDimensions.radiusSmall),
+        ),
+      ),
+    );
+  }
+}
